@@ -51,7 +51,7 @@ public class MainAssertions {
 		//System.out.println(targetFunction);
 		Integer semanticDistance	  = 1;
 		Integer semanticDistanceBound = 10;
-		Integer sketchBound			  = 50;
+		Integer sketchBound			  = 60;
 		while (semanticDistance < semanticDistanceBound) {
 			ConstraintFactory cf 	  = new ConstraintFactory(targetFunction, specification, examples,
 										new FcnHeader(targetFunction.getName(), targetFunction.getReturnType(), 
