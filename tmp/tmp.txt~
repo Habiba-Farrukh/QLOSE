@@ -1,0 +1,276 @@
+bit line5change = 0;
+bit line6change = 0;
+bit line8change = 0;
+bit line9change = 0;
+
+bit coeff0change = ??;
+ int Coeff0(){
+if(coeff0change == 0){
+return 1;}
+
+if(??){
+return 0;}
+
+return -1;
+}
+
+bit coeff0change = ??;
+ int Coeff0(){
+if(coeff0change == 0){
+return 0;}
+
+if(??){
+return 1;}
+
+return -1;
+}
+
+int coeff1change = ??;
+ int Coeff1(){
+if(??){
+return 0;}
+
+return coeff1change;
+}
+
+bit coeff2change = ??;
+ int Coeff2(){
+if(coeff2change == 0){
+return 1;}
+
+if(??){
+return 0;}
+
+return -1;
+}
+
+bit coeff3change = ??;
+ int Coeff3(){
+if(coeff3change == 0){
+return 0;}
+
+if(??){
+return 1;}
+
+return -1;
+}
+
+bit coeff4change = ??;
+ int Coeff4(){
+if(coeff4change == 0){
+return 0;}
+
+if(??){
+return 1;}
+
+return -1;
+}
+
+bit coeff5change = ??;
+ int Coeff5(){
+if(coeff5change == 0){
+return 0;}
+
+if(??){
+return 1;}
+
+return -1;
+}
+
+bit coeff6change = ??;
+ int Coeff6(){
+if(coeff6change == 0){
+return 0;}
+
+if(??){
+return 1;}
+
+return -1;
+}
+
+int coeff7change = ??;
+ int Coeff7(){
+if(??){
+return 0;}
+
+return coeff7change;
+}
+
+bit coeff8change = ??;
+ int Coeff8(){
+if(coeff8change == 0){
+return 0;}
+
+if(??){
+return 1;}
+
+return -1;
+}
+
+int coeff9change = ??;
+ int Coeff9(){
+if(??){
+return 0;}
+
+return coeff9change;
+}
+
+bit coeff10change = ??;
+ int Coeff10(){
+if(coeff10change == 0){
+return 1;}
+
+if(??){
+return 0;}
+
+return -1;
+}
+
+bit coeff11change = ??;
+ int Coeff11(){
+if(coeff11change == 0){
+return 0;}
+
+if(??){
+return 1;}
+
+return -1;
+}
+
+bit coeff12change = ??;
+ int Coeff12(){
+if(coeff12change == 0){
+return 0;}
+
+if(??){
+return 1;}
+
+return -1;
+}
+
+bit coeff13change = ??;
+ int Coeff13(){
+if(coeff13change == 0){
+return 0;}
+
+if(??){
+return 1;}
+
+return -1;
+}
+
+bit coeff14change = ??;
+ int Coeff14(){
+if(coeff14change == 0){
+return 0;}
+
+if(??){
+return 1;}
+
+return -1;
+}
+
+int coeff15change = ??;
+ int Coeff15(){
+if(??){
+return 0;}
+
+return coeff15change;
+}
+
+
+int[16] lineArray;
+int[16] xArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int[16] yArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int[16] zArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+
+
+ int max3(int x, int y, int z){
+int linehit = 0;
+(count)++;
+lineArray[count] = 5;
+xArray[count] = x;
+yArray[count] = y;
+zArray[count] = z;
+
+if(((x - y) + ((Coeff0()) * (Coeff1()))) > 0){
+(count)++;
+lineArray[count] = 6;
+xArray[count] = x;
+yArray[count] = y;
+zArray[count] = z;
+
+y = (((((Coeff2()) * x) + ((Coeff3()) * x)) + ((Coeff4()) * y)) + ((Coeff5()) * z)) + ((Coeff6()) * (Coeff7()));
+
+
+(count)++;
+lineArray[count] = 6;
+xArray[count] = x;
+yArray[count] = y;
+zArray[count] = z;
+
+}
+
+
+(count)++;
+lineArray[count] = 8;
+xArray[count] = x;
+yArray[count] = y;
+zArray[count] = z;
+
+if(((y - z) + ((Coeff8()) * (Coeff9()))) > 0){
+(count)++;
+lineArray[count] = 9;
+xArray[count] = x;
+yArray[count] = y;
+zArray[count] = z;
+
+z = (((((Coeff10()) * x) + ((Coeff11()) * x)) + ((Coeff12()) * y)) + ((Coeff13()) * z)) + ((Coeff14()) * (Coeff15()));
+
+
+(count)++;
+lineArray[count] = 9;
+xArray[count] = x;
+yArray[count] = y;
+zArray[count] = z;
+
+}
+
+
+(count)++;
+lineArray[count] = 11;
+xArray[count] = x;
+yArray[count] = y;
+zArray[count] = z;
+
+return z;
+
+
+}
+
+harness void Constraint(){
+assert ((max3(1, 2, 3)) == 3);
+assert ((max3(3, 2, 1)) == 3);
+assert ((max3(5, 8, 1)) == 8);
+int SyntacticDistance = 0;
+int SemanticDistance = 0;
+SyntacticDistance += coeff0change;
+SyntacticDistance += coeff1change;
+SyntacticDistance += coeff2change;
+SyntacticDistance += coeff3change;
+SyntacticDistance += coeff4change;
+SyntacticDistance += coeff5change;
+SyntacticDistance += coeff6change;
+SyntacticDistance += coeff7change;
+SyntacticDistance += coeff8change;
+SyntacticDistance += coeff9change;
+SyntacticDistance += coeff10change;
+SyntacticDistance += coeff11change;
+SyntacticDistance += coeff12change;
+SyntacticDistance += coeff13change;
+SyntacticDistance += coeff14change;
+SyntacticDistance += coeff15change;
+
+minimize(SyntacticDistance);
+}

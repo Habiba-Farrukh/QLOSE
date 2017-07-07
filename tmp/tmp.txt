@@ -1,0 +1,364 @@
+bit line5change = 0;
+bit line7change = 0;
+bit line8change = 0;
+
+bit coeff0change = ??;
+ int Coeff0(){
+if(coeff0change == 0){
+return 1;
+}
+
+if(??){
+return 0;
+}
+
+return -1;
+}
+
+bit coeff1change = ??;
+ int Coeff1(){
+if(coeff1change == 0){
+return 0;
+}
+
+if(??){
+return 1;
+}
+
+return -1;
+}
+
+bit coeff2change = ??;
+ int Coeff2(){
+if(coeff2change == 0){
+return 0;
+}
+
+if(??){
+return 1;
+}
+
+return -1;
+}
+
+bit coeff3change = ??;
+ int Coeff3(){
+if(coeff3change == 0){
+return 0;
+}
+
+if(??){
+return 1;
+}
+
+return -1;
+}
+
+int coeff4change = ??;
+ int Coeff4(){
+if(??){
+return 0;
+}
+
+return coeff4change;
+}
+
+bit coeff5change = ??;
+ int Coeff5(){
+if(coeff5change == 0){
+return 1;
+}
+
+if(??){
+return 0;
+}
+
+return -1;
+}
+
+bit coeff6change = ??;
+ int Coeff6(){
+if(coeff6change == 0){
+return 0;
+}
+
+if(??){
+return 1;
+}
+
+return -1;
+}
+
+bit coeff7change = ??;
+ int Coeff7(){
+if(coeff7change == 0){
+return 0;
+}
+
+if(??){
+return 1;
+}
+
+return -1;
+}
+
+bit coeff8change = ??;
+ int Coeff8(){
+if(coeff8change == 0){
+return 0;
+}
+
+if(??){
+return 1;
+}
+
+return -1;
+}
+
+int coeff9change = ??;
+ int Coeff9(){
+if(??){
+return 0;
+}
+
+return coeff9change;
+}
+
+bit coeff10change = ??;
+ int Coeff10(){
+if(coeff10change == 0){
+return 0;
+}
+
+if(??){
+return 1;
+}
+
+return -1;
+}
+
+bit coeff11change = ??;
+ int Coeff11(){
+if(coeff11change == 0){
+return 0;
+}
+
+if(??){
+return 1;
+}
+
+return -1;
+}
+
+int coeff12change = ??;
+ int Coeff12(){
+if(??){
+return 0;
+}
+
+return coeff12change;
+}
+
+
+bit const0change = ??;
+ int Const0(){
+if(const0change == 1){
+return ??;
+}else{
+return 1;
+}}
+
+bit const1change = ??;
+ int Const1(){
+if(const1change == 1){
+return ??;
+}else{
+return 1;
+}}
+
+
+int[100] lineArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int[100] xArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int[100] resultArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int[100] yArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+
+int[100] lineOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int[100] xOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int[100] resultOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int[100] yOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+
+int count = -1;
+int originalCount = -1;
+
+ int doubleUpOriginal(int x, int y){
+(originalCount)++;
+lineOriginalArray[originalCount] = 5;
+xOriginalArray[originalCount] = x;
+yOriginalArray[originalCount] = y;
+
+int result = x;
+
+(originalCount)++;
+lineOriginalArray[originalCount] = 6;
+xOriginalArray[originalCount] = x;
+resultOriginalArray[originalCount] = result;
+yOriginalArray[originalCount] = y;
+
+while(x > 1){
+(originalCount)++;
+lineOriginalArray[originalCount] = 7;
+xOriginalArray[originalCount] = x;
+resultOriginalArray[originalCount] = result;
+yOriginalArray[originalCount] = y;
+
+result += x;
+
+(originalCount)++;
+lineOriginalArray[originalCount] = 8;
+xOriginalArray[originalCount] = x;
+resultOriginalArray[originalCount] = result;
+yOriginalArray[originalCount] = y;
+
+y -= 1;
+
+
+(originalCount)++;
+lineOriginalArray[originalCount] = 8;
+xOriginalArray[originalCount] = x;
+resultOriginalArray[originalCount] = result;
+yOriginalArray[originalCount] = y;
+
+
+}
+
+(originalCount)++;
+lineOriginalArray[originalCount] = 10;
+xOriginalArray[originalCount] = x;
+yOriginalArray[originalCount] = y;
+
+return result;
+
+}
+
+ int doubleUp(int x, int y){
+int linehit = 0;
+(count)++;
+lineArray[count] = 5;
+xArray[count] = x;
+yArray[count] = y;
+
+int result = ((((Coeff0()) * x) + ((Coeff1()) * x)) + ((Coeff2()) * y)) + ((Coeff3()) * (Coeff4()));
+
+(count)++;
+lineArray[count] = 6;
+xArray[count] = x;
+resultArray[count] = result;
+yArray[count] = y;
+
+while(x > (Const0())){
+(count)++;
+lineArray[count] = 7;
+xArray[count] = x;
+resultArray[count] = result;
+yArray[count] = y;
+
+result += ((((Coeff5()) * x) + ((Coeff6()) * x)) + ((Coeff7()) * y)) + ((Coeff8()) * (Coeff9()));
+
+(count)++;
+lineArray[count] = 8;
+xArray[count] = x;
+resultArray[count] = result;
+yArray[count] = y;
+
+y -= ((Const1()) + ((Coeff10()) * x)) + ((Coeff11()) * (Coeff12()));
+
+
+(count)++;
+lineArray[count] = 8;
+xArray[count] = x;
+resultArray[count] = result;
+yArray[count] = y;
+
+
+}
+
+(count)++;
+lineArray[count] = 10;
+xArray[count] = x;
+yArray[count] = y;
+
+return result;
+
+
+}
+
+bit const13change = ??;
+ int Const13(){
+if(const13change == 1){
+return ??;
+}else{
+return 1;
+}}
+
+bit const14change = ??;
+ int Const14(){
+if(const14change == 1){
+return ??;
+}else{
+return 1;
+}}
+
+
+harness void Constraint(){
+int SyntacticDistance = 0;
+int SemanticDistance = 0;
+xArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+xOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+resultArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+resultOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+yArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+yOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+lineOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+lineArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+xArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+xOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+resultArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+resultOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+yArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+yOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+lineOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+lineArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+count = -1;
+originalCount = -1;
+int max = 0;
+int maxOriginal = 0;
+max = doubleUp(Const13(), Const14());
+maxOriginal = doubleUpOriginal(Const13(), Const14());
+assert (max == ((Const13()) * (Const14())));
+for(int i = 0; i < 100; (i)++){
+SemanticDistance += (xArray[i]) != (xOriginalArray[i]);
+SemanticDistance += (resultArray[i]) != (resultOriginalArray[i]);
+SemanticDistance += (yArray[i]) != (yOriginalArray[i]);
+}
+
+
+SyntacticDistance += coeff0change;
+SyntacticDistance += coeff1change;
+SyntacticDistance += coeff2change;
+SyntacticDistance += coeff3change;
+SyntacticDistance += coeff4change;
+SyntacticDistance += coeff5change;
+SyntacticDistance += coeff6change;
+SyntacticDistance += coeff7change;
+SyntacticDistance += coeff8change;
+SyntacticDistance += coeff9change;
+SyntacticDistance += coeff10change;
+SyntacticDistance += coeff11change;
+SyntacticDistance += coeff12change;
+
+assert (SemanticDistance < 1);
+minimize(SyntacticDistance+SemanticDistance);
+}
