@@ -160,11 +160,11 @@ public class CallSketch {
 						result.put(index, oriValue.get(index));
 				}
 				for (Integer index : unchangedConstIndex) {
-					constResult.remove(index);
+					/*constResult.remove(index);
 					constValidList.remove(index);
 					if (constOriValue.containsKey(index)) {
 						constResult.put(index, constOriValue.get(index));
-					}
+					}*/
 				}
 				
 /*				for (Integer keys : result.keySet()) {

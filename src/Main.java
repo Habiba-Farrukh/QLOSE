@@ -84,13 +84,44 @@ public class Main {
 
 			SketchResult resultS = CallSketch.CallByString(script);
 			Map<Integer, Integer> result = resultS.Result;
-			System.out.println(result);
+			Map<Integer, Integer> constResult = resultS.constResult;
+
+			System.out.println(constResult);
 			Set<Integer> validIndexSet = resultS.valid_Set;
+			Set<Integer> validConst	   = resultS.constValidSet;
 			List<Integer> indexset = new ArrayList<Integer>();
+			System.out.println(validConst);
 			indexset.addAll(result.keySet());
+			List<Integer> constIndexSet = new ArrayList<Integer>();
+			constIndexSet.addAll(constResult.keySet());
+			Map<Integer, List<Integer>> lineToCoeff = new HashMap<Integer, List<Integer>>();
+			Map<Integer, List<Integer>> lineToConst = new HashMap<Integer, List<Integer>>();
+
+			for (int coeff : ConstraintFactory.coeffIndexToLine.keySet()) {
+				int line = ConstraintFactory.coeffIndexToLine.get(coeff);
+				if (validIndexSet.contains(coeff)) {
+					if (lineToCoeff.containsKey(line))
+						lineToCoeff.get(line).add(coeff);
+					else {
+						lineToCoeff.put(line, new ArrayList<Integer>(coeff));
+					}
+				}
+			}
+			for (int constNo : ConstraintFactory.constMapLine.keySet()) {
+				int line = ConstraintFactory.constMapLine.get(constNo);
+					if (lineToConst.containsKey(line))
+						lineToConst.get(line).add(constNo);
+					else {
+						List<Integer> l = new ArrayList<Integer>();
+						l.add(constNo);
+						lineToConst.put(line, l);
+					}
+			}
+			System.out.println(lineToCoeff);
+			System.out.println(lineToConst);
 			Map<Integer, String> repair = new HashMap<Integer, String>();
 			int tmpLine = -1;
-			for (int k : result.keySet()) {
+/*			for (int k : result.keySet()) {
 				if (ConstraintFactory.coeffIndexToLine.get(k) == tmpLine)
 					continue;
 				if (!validIndexSet.contains(k))
@@ -99,6 +130,13 @@ public class Main {
 				tmpLine = ConstraintFactory.coeffIndexToLine.get(k);
 				String stmtString = ConstraintFactory.lineToString.get(tmpLine);
 				repair.put(tmpLine, replaceCoeff(stmtString, result, ConstraintFactory.coeffIndexToLine, tmpLine));
+			}*/
+			for (int line : ConstraintFactory.lineToString.keySet()) {
+				if (lineToCoeff.containsKey(line) || lineToConst.containsKey(line)){
+					String stmtString = ConstraintFactory.lineToString.get(line);
+					repair.put(line, replaceCoeff(stmtString, result, constResult, ConstraintFactory.coeffIndexToLine,
+							ConstraintFactory.constMapLine, line));
+				}
 			}
 			System.out.println(repair);
 			//return repair;
@@ -123,12 +161,18 @@ public class Main {
 	}
 	
 	private String replaceCoeff(String stmtString, Map<Integer, Integer> result,
-			Map<Integer, Integer> coeffIndex_to_Line, int tmpLine) {
+			Map<Integer, Integer> constResult, Map<Integer, Integer> coeffIndexToLine,
+			Map<Integer, Integer> constMapLine, int tmpLine) {
 		List<Integer> rangedCoeff = new ArrayList<Integer>();
+		List<Integer> rangedConst = new ArrayList<Integer>();
 		// System.out.println(result);
-		for (int k : coeffIndex_to_Line.keySet()) {
-			if (coeffIndex_to_Line.get(k) == tmpLine)
+		for (int k : coeffIndexToLine.keySet()) {
+			if (coeffIndexToLine.get(k) == tmpLine)
 				rangedCoeff.add(k);
+		}
+		for (int k : constMapLine.keySet()) {
+			if (constMapLine.get(k) == tmpLine)
+				rangedConst.add(k);
 		}
 		for (int c : rangedCoeff) {
 			if (result.containsKey(c))
@@ -137,13 +181,21 @@ public class Main {
 				stmtString = stmtString.replace("(Coeff" + c + "())", "0");
 
 		}
+		for (int c : rangedConst) {
+			if (constResult.containsKey(c))
+				stmtString = stmtString.replace("(Const" + c + "())", constResult.get(c).toString());
+			else
+				stmtString = stmtString.replace("(Const" + c + "())", "0");
 
+		}
+		
 		stmtString = simplifyByCAS(stmtString);
 
 		return stmtString;
 	}
 	
 	private String simplifyByCAS(String stmtString) {
+		System.out.println("The stmt string is: " + stmtString);
 		String[] s;
 		if (stmtString.substring(0, 2).equals("if")){
 			String tmp = stmtString.substring(3, stmtString.length()-1);

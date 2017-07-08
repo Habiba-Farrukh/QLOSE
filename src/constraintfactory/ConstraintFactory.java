@@ -40,7 +40,7 @@ public class ConstraintFactory {
 	public static List<ExternalFunction> externalFuncs = new ArrayList<ExternalFunction>();
 	
 	static Map<String, Set<Integer>> constMap = new HashMap<String, Set<Integer>>();
-	static Map<Integer, Integer> constMapLine = new HashMap<Integer, Integer>();
+	public static Map<Integer, Integer> constMapLine = new HashMap<Integer, Integer>();
 
 
 	static int numberOfConstants	= 0;  // number of constants in code
@@ -179,6 +179,9 @@ public class ConstraintFactory {
 			//System.out.println(varsNames.get(i));
 		}
 
+		for (int i : constMapLine.keySet()) {
+			System.out.println("The line number is: " + i + " and the value is: " + constMapLine.get(i));
+		}
 		List<Statement> stmts = new ArrayList<>();
 		stmts.add(globalVarDecls);
 		// add declare of constant functions
