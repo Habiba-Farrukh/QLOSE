@@ -129,7 +129,7 @@ public class ConstraintFactory {
 	}
 
 	private String getSketchScriptForAssertions(Statement s) {
-		StmtBlock source			= ((StmtBlock) s).clone();
+		Statement source			= ((StmtBlock) s).clone();
 		StmtBlock originalSource 	= ((StmtBlock) source).clone();
 		Statement coeffFunDecls 	= null;
 		Statement constFunDecls		= null;
@@ -154,13 +154,14 @@ public class ConstraintFactory {
 		System.out.println(source.toString_Context());
 
 		coeffFunDecls = ConstraintFactory.replaceLinearCombination(source);
-		constFunDecls = ConstraintFactory.replaceConst(source);
 		System.out.println("*************************COEFFICIENT FUNCTION DECLARATIONS**********************************");
 		System.out.println(coeffFunDecls);
 
 		Statement globalVarDecls = getGlobalDecls();
 		System.out.println("*************************GLOBAL VARIABLE DECLARATIONS**********************************");
 		System.out.println(globalVarDecls);
+
+		constFunDecls = ConstraintFactory.replaceConst(source);
 
 		// add record statements to source code and collect variables info
 		Map<String, Type> vars 		  	= ConstraintFactory.addRecordStmt((StmtBlock) source);
@@ -217,7 +218,100 @@ public class ConstraintFactory {
 			numberOfConstants++;
 
 		}
-		return block.toString() + "\n" + fOriginal.toString() + "\n" + f.toString() + "\n" + inputHandling.toString() + "\n" + constraintFunctionAssertions().toString();
+		return block.toString() + "\n" + fOriginal.toString() + "\n" + f.toString() + "\n" +
+		inputHandling.toString() + "\n" + constraintFunctionAssertions().toString() +
+		"\n" + distanceFunctionAssertions().toString();
+	}
+
+	
+	private Function constraintFunctionAssertions() {
+		List<Statement> stmts = new ArrayList<Statement>();
+		List<Expression> assertInputs = new ArrayList<Expression>();
+		List<Parameter> params		  = new ArrayList<Parameter>();
+		for (int i = 0; i < inputArgs.size(); i++) {
+			Expression e = new ExprVar("input"+i);
+			assertInputs.add(e);
+			Parameter p  = new Parameter(new TypePrimitive(4), ("input"+i), 0, false);
+			params.add(p);
+		}
+		stmts.add(new StmtAssert(
+				new ExprBinary(new ExprFunCall(inputFunction.getName(), assertInputs),
+						"==", new ExprBinary(new ExprVar("input0"), "*", new ExprConstInt(2), 0), 0)));
+		return new Function("Constraint", new TypeVoid(), params, new StmtBlock(stmts),
+				FcnType.Harness);
+	}
+	
+	private Function distanceFunctionAssertions() {
+		List<Statement> stmts = new ArrayList<Statement>();
+		stmts.add(new StmtVarDecl(new TypePrimitive(4), "SyntacticDistance", new ExprConstInt(0), 0));
+		stmts.add(new StmtVarDecl(new TypePrimitive(4), "SemanticDistance", new ExprConstInt(0), 0));
+
+		// semantic distance
+		if (distanceMode == 0)
+			stmts.add(hammingDistanceAssertions());		
+
+		// syntactic distance
+		StmtBlock syntacticDistance = new StmtBlock();
+		for (int i = 0; i < numberOfConstants; i++) {
+			// if (!ConstraintFactory.noWeightCoeff.contains(i))
+			syntacticDistance.addStmt(new StmtAssign(new ExprVar("SyntacticDistance"), new ExprVar("coeff" + i + "change"), 1, 1));
+		}
+		stmts.add(syntacticDistance);
+
+		Expression sumOfConstChange = new ExprVar("const" + 0 + "change");
+		stmts.add(new StmtAssert(new ExprBinary(new ExprVar("SemanticDistance"), "<", new ExprConstInt(semanticDistanceBound), 0), 0));
+
+		stmts.add(new StmtMinimize(new ExprVar("SyntacticDistance+SemanticDistance"), true));
+
+		return new Function("Distance", new TypeVoid(), new ArrayList<Parameter>(), new StmtBlock(stmts),
+				FcnType.Harness);
+
+	}
+	
+	private Statement hammingDistanceAssertions(){
+		List<Statement> stmts = new ArrayList<Statement>();
+		stmts.addAll(varArrayInitialization().stmts);
+
+		StmtBlock cons = new StmtBlock();
+		cons.addStmt(varArrayInitialization());
+		cons.addStmt(new StmtAssign(new ExprVar("count"), new ExprConstInt(-1), 0));
+		cons.addStmt(new StmtAssign(new ExprVar("originalCount"), new ExprConstInt(-1), 0));
+
+		cons.addStmt(new StmtVarDecl(new TypePrimitive(4), "out", new ExprConstInt(0), 0));
+		cons.addStmt(new StmtVarDecl(new TypePrimitive(4), "outOriginal", new ExprConstInt(0), 0));
+
+		cons.addStmt(new StmtAssign(new ExprVar("out"), new ExprFunCall(inputFunctionHeader.getName(), in, inputFunctionHeader.getName()), 0));
+		cons.addStmt(new StmtAssign(new ExprVar("outOriginal"), new ExprFunCall(inputFunctionHeader.getName()+"Original",
+				in, inputFunctionHeader.getName()), 0));
+		cons.addStmt(new StmtAssert(
+				new ExprBinary(new ExprVar("out"),
+						"==", new ExprBinary(new ExprFunCall("Const"+(numberOfConstants-2)), "*", new ExprConstInt(2), 0), 0)));
+		cons.addStmt(new StmtAssert(
+				new ExprBinary(new ExprVar("outOriginal"),
+						"==", new ExprBinary(new ExprFunCall("Const"+(numberOfConstants-2)), "*", new ExprConstInt(2), 0), 0)));
+		numberOfConstants -= inputArgs.size();
+
+		List<Statement> forBody = new ArrayList<Statement>();
+		Statement forinit = new StmtVarDecl(new TypePrimitive(4), "i", new ExprConstInt(0), 0);
+		Expression forcon = new ExprBinary(new ExprVar("i"), "<", new ExprConstInt(length), 0);
+		Statement forupdate = new StmtExpr(new ExprUnary(5, new ExprVar("i"), 0), 0);
+
+		for (String v : varsList) {
+			if (namesToType.get(v) instanceof TypeArray)
+				continue;
+			forBody.add(new StmtAssign(new ExprVar("SemanticDistance"),
+					new ExprBinary(new ExprArrayRange(v + "Array", "i", 0), "!=",
+							new ExprArrayRange(v + "OriginalArray", "i", 0), 0),
+					1, 1));
+		}
+
+		//forBody.add(new StmtAssign(new ExprVar("SemanticDistance"), new ExprBinary(new ExprArrayRange("lineArray", "i", 0),
+		//	"!=", new ExprArrayRange("lineOriginalArray", "i", 0), 0), 1, 1));
+		cons.addStmt(new StmtFor(forinit, forcon, forupdate, new StmtBlock(forBody), false, 0));
+		stmts.addAll(cons.stmts);
+
+		StmtBlock s = new StmtBlock(stmts);
+		return s;
 	}
 
 	private String getSketchScriptForExamples(Statement source) {
@@ -240,6 +334,11 @@ public class ConstraintFactory {
 
 		System.out.println("*************************ORIGINAL SOURCE**********************************");
 		System.out.println(originalSource);
+
+
+		Function fOriginal = new Function(new FcnHeader(inputFunction.getName()+"Original", inputFunction.getReturnType(), 
+				inputFunction.getParams()), originalSource);
+		
 		System.out.println("*************************SOURCE CONTEXT**********************************");
 		System.out.println(source.toString_Context());
 
@@ -291,82 +390,9 @@ public class ConstraintFactory {
 		System.out.println("*************************FUNCTION**********************************");
 		System.out.println(f);
 
-		Function fOriginal = new Function(new FcnHeader(inputFunction.getName()+"Original", inputFunction.getReturnType(), 
-				inputFunction.getParams()), originalSource);
 		constraintFunctionExamples();
 		return block.toString() + "\n" + fOriginal.toString() + "\n" + f.toString() + "\n" + constraintFunctionExamples().toString();
 
-	}
-	
-	private Function constraintFunctionAssertions() {
-		List<Statement> stmts = new ArrayList<Statement>();
-		
-		stmts.add(new StmtVarDecl(new TypePrimitive(4), "SyntacticDistance", new ExprConstInt(0), 0));
-		stmts.add(new StmtVarDecl(new TypePrimitive(4), "SemanticDistance", new ExprConstInt(0), 0));
-		
-
-		// semantic distance
-		if (distanceMode == 0)
-			stmts.add(hammingDistanceAssertions());		
-
-		// syntactic distance
-		StmtBlock syntacticDistance = new StmtBlock();
-		for (int i = 0; i < numberOfConstants; i++) {
-			// if (!ConstraintFactory.noWeightCoeff.contains(i))
-			syntacticDistance.addStmt(new StmtAssign(new ExprVar("SyntacticDistance"), new ExprVar("coeff" + i + "change"), 1, 1));
-		}
-		stmts.add(syntacticDistance);
-
-		Expression sumOfConstChange = new ExprVar("const" + 0 + "change");
-		stmts.add(new StmtAssert(new ExprBinary(new ExprVar("SemanticDistance"), "<", new ExprConstInt(semanticDistanceBound), 0), 0));
-
-		stmts.add(new StmtMinimize(new ExprVar("SyntacticDistance+SemanticDistance"), true));
-
-		return new Function("Constraint", new TypeVoid(), new ArrayList<Parameter>(), new StmtBlock(stmts),
-				FcnType.Harness);
-	}
-
-	private Statement hammingDistanceAssertions(){
-		List<Statement> stmts = new ArrayList<Statement>();
-		stmts.addAll(varArrayInitialization().stmts);
-
-		StmtBlock cons = new StmtBlock();
-		cons.addStmt(varArrayInitialization());
-		cons.addStmt(new StmtAssign(new ExprVar("count"), new ExprConstInt(-1), 0));
-		cons.addStmt(new StmtAssign(new ExprVar("originalCount"), new ExprConstInt(-1), 0));
-
-		cons.addStmt(new StmtVarDecl(new TypePrimitive(4), "max", new ExprConstInt(0), 0));
-		cons.addStmt(new StmtVarDecl(new TypePrimitive(4), "maxOriginal", new ExprConstInt(0), 0));
-
-		cons.addStmt(new StmtAssign(new ExprVar("max"), new ExprFunCall(inputFunctionHeader.getName(), in, inputFunctionHeader.getName()), 0));
-		cons.addStmt(new StmtAssign(new ExprVar("maxOriginal"), new ExprFunCall(inputFunctionHeader.getName()+"Original",
-				in, inputFunctionHeader.getName()), 0));
-		cons.addStmt(new StmtAssert(
-				new ExprBinary(new ExprVar("max"),
-						"==", new ExprBinary(new ExprFunCall("Const"+(numberOfConstants-2)), "*", new ExprFunCall("Const"+(numberOfConstants-1)), 0), 0)));
-		numberOfConstants -= inputArgs.size();
-
-		List<Statement> forBody = new ArrayList<Statement>();
-		Statement forinit = new StmtVarDecl(new TypePrimitive(4), "i", new ExprConstInt(0), 0);
-		Expression forcon = new ExprBinary(new ExprVar("i"), "<", new ExprConstInt(length), 0);
-		Statement forupdate = new StmtExpr(new ExprUnary(5, new ExprVar("i"), 0), 0);
-
-		for (String v : varsList) {
-			if (namesToType.get(v) instanceof TypeArray)
-				continue;
-			forBody.add(new StmtAssign(new ExprVar("SemanticDistance"),
-					new ExprBinary(new ExprArrayRange(v + "Array", "i", 0), "!=",
-							new ExprArrayRange(v + "OriginalArray", "i", 0), 0),
-					1, 1));
-		}
-
-		//forBody.add(new StmtAssign(new ExprVar("SemanticDistance"), new ExprBinary(new ExprArrayRange("lineArray", "i", 0),
-		//	"!=", new ExprArrayRange("lineOriginalArray", "i", 0), 0), 1, 1));
-		cons.addStmt(new StmtFor(forinit, forcon, forupdate, new StmtBlock(forBody), false, 0));
-		stmts.addAll(cons.stmts);
-
-		StmtBlock s = new StmtBlock(stmts);
-		return s;
 	}
 
 	private Function constraintFunctionExamples() {
@@ -521,9 +547,10 @@ public class ConstraintFactory {
 				addToConstMap(data);
 				addToConstMapLine(data);
 				list.add(constChangeDecl(index, new TypePrimitive(1)));
-				System.out.println("Data value is : " + data.getValue());
 				list.add(new StmtFunDecl(addConstFun(index, data.getValue(), data.getType())));
 			}
+			System.out.println("Target value is : " + target);
+
 			index = data.getIndex();
 			pushAll(stmtStack, data.getChildren());
 		}

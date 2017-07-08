@@ -1,25 +1,12 @@
 SKETCH version 1.7.2
 Benchmark = tmp.txt
 /* BEGIN PACKAGE ANONYMOUS*/
-/*tmp.txt:6*/
+/*tmp.txt:4*/
 
-void Coeff0 (ref int _out, ref global bit coeff0change__ANONYMOUS_s64)/*tmp.txt:6*/
+void Coeff0 (ref int _out, ref global bit coeff0change__ANONYMOUS_s42)/*tmp.txt:4*/
 {
   _out = 0;
-  if(coeff0change__ANONYMOUS_s64 == 0)/*tmp.txt:7*/
-  {
-    _out = 1;
-    return;
-  }
-  _out = -1;
-  return;
-}
-/*tmp.txt:19*/
-
-void Coeff1 (ref int _out, ref global bit coeff1change__ANONYMOUS_s66)/*tmp.txt:19*/
-{
-  _out = 0;
-  if(coeff1change__ANONYMOUS_s66 == 0)/*tmp.txt:20*/
+  if(coeff0change__ANONYMOUS_s42 == 0)/*tmp.txt:5*/
   {
     _out = 0;
     return;
@@ -27,12 +14,12 @@ void Coeff1 (ref int _out, ref global bit coeff1change__ANONYMOUS_s66)/*tmp.txt:
   _out = -1;
   return;
 }
-/*tmp.txt:128*/
+/*tmp.txt:17*/
 
-void Coeff10 (ref int _out, ref global bit coeff10change__ANONYMOUS_s83)/*tmp.txt:128*/
+void Coeff1 (ref int _out, ref global bit coeff1change__ANONYMOUS_s62)/*tmp.txt:17*/
 {
   _out = 0;
-  if(coeff10change__ANONYMOUS_s83 == 0)/*tmp.txt:129*/
+  if(coeff1change__ANONYMOUS_s62 == 0)/*tmp.txt:18*/
   {
     _out = 0;
     return;
@@ -40,12 +27,12 @@ void Coeff10 (ref int _out, ref global bit coeff10change__ANONYMOUS_s83)/*tmp.tx
   _out = -1;
   return;
 }
-/*tmp.txt:141*/
+/*tmp.txt:30*/
 
-void Coeff11 (ref int _out, ref global bit coeff11change__ANONYMOUS_s69)/*tmp.txt:141*/
+void Coeff2 (ref int _out, ref global bit coeff2change__ANONYMOUS_s61)/*tmp.txt:30*/
 {
   _out = 0;
-  if(coeff11change__ANONYMOUS_s69 == 0)/*tmp.txt:142*/
+  if(coeff2change__ANONYMOUS_s61 == 0)/*tmp.txt:31*/
   {
     _out = 0;
     return;
@@ -53,114 +40,36 @@ void Coeff11 (ref int _out, ref global bit coeff11change__ANONYMOUS_s69)/*tmp.tx
   _out = -1;
   return;
 }
-/*tmp.txt:154*/
+/*tmp.txt:43*/
 
-void Coeff12 (ref int _out)/*tmp.txt:154*/
+void Coeff3 (ref int _out)/*tmp.txt:43*/
 {
   _out = 0;
   _out = 0;
   return;
 }
-/*tmp.txt:32*/
+/*tmp.txt:53*/
 
-void Coeff2 (ref int _out, ref global bit coeff2change__ANONYMOUS_s84)/*tmp.txt:32*/
+void Const0 (ref int _out, ref global bit const0change__ANONYMOUS_s35)/*tmp.txt:53*/
 {
   _out = 0;
-  if(coeff2change__ANONYMOUS_s84 == 0)/*tmp.txt:33*/
+  if(const0change__ANONYMOUS_s35 == 1)/*tmp.txt:54*/
   {
-    _out = 0;
+    _out = 2;
     return;
   }
-  _out = -1;
-  return;
-}
-/*tmp.txt:45*/
-
-void Coeff3 (ref int _out, ref global bit coeff3change__ANONYMOUS_s82)/*tmp.txt:45*/
-{
-  _out = 0;
-  if(coeff3change__ANONYMOUS_s82 == 0)/*tmp.txt:46*/
+  else
   {
-    _out = 0;
+    _out = 5;
     return;
   }
-  _out = -1;
-  return;
 }
-/*tmp.txt:58*/
+/*tmp.txt:115*/
 
-void Coeff4 (ref int _out)/*tmp.txt:58*/
+void Const4 (ref int _out, ref global bit const4change__ANONYMOUS_s34)/*tmp.txt:115*/
 {
   _out = 0;
-  _out = 0;
-  return;
-}
-/*tmp.txt:67*/
-
-void Coeff5 (ref int _out, ref global bit coeff5change__ANONYMOUS_s81)/*tmp.txt:67*/
-{
-  _out = 0;
-  if(coeff5change__ANONYMOUS_s81 == 0)/*tmp.txt:68*/
-  {
-    _out = 1;
-    return;
-  }
-  _out = -1;
-  return;
-}
-/*tmp.txt:80*/
-
-void Coeff6 (ref int _out, ref global bit coeff6change__ANONYMOUS_s68)/*tmp.txt:80*/
-{
-  _out = 0;
-  if(coeff6change__ANONYMOUS_s68 == 0)/*tmp.txt:81*/
-  {
-    _out = 0;
-    return;
-  }
-  _out = -1;
-  return;
-}
-/*tmp.txt:93*/
-
-void Coeff7 (ref int _out, ref global bit coeff7change__ANONYMOUS_s65)/*tmp.txt:93*/
-{
-  _out = 0;
-  if(coeff7change__ANONYMOUS_s65 == 0)/*tmp.txt:94*/
-  {
-    _out = 0;
-    return;
-  }
-  _out = -1;
-  return;
-}
-/*tmp.txt:106*/
-
-void Coeff8 (ref int _out, ref global bit coeff8change__ANONYMOUS_s61)/*tmp.txt:106*/
-{
-  _out = 0;
-  if(coeff8change__ANONYMOUS_s61 == 0)/*tmp.txt:107*/
-  {
-    _out = 0;
-    return;
-  }
-  _out = -1;
-  return;
-}
-/*tmp.txt:119*/
-
-void Coeff9 (ref int _out)/*tmp.txt:119*/
-{
-  _out = 0;
-  _out = 0;
-  return;
-}
-/*tmp.txt:164*/
-
-void Const0 (ref int _out, ref global bit const0change__ANONYMOUS_s70)/*tmp.txt:164*/
-{
-  _out = 0;
-  if(const0change__ANONYMOUS_s70 == 1)/*tmp.txt:165*/
+  if(const4change__ANONYMOUS_s34 == 1)/*tmp.txt:116*/
   {
     _out = 0;
     return;
@@ -171,28 +80,12 @@ void Const0 (ref int _out, ref global bit const0change__ANONYMOUS_s70)/*tmp.txt:
     return;
   }
 }
-/*tmp.txt:172*/
+/*tmp.txt:123*/
 
-void Const1 (ref int _out, ref global bit const1change__ANONYMOUS_s62)/*tmp.txt:172*/
+void Const5 (ref int _out, ref global bit const5change__ANONYMOUS_s36)/*tmp.txt:123*/
 {
   _out = 0;
-  if(const1change__ANONYMOUS_s62 == 1)/*tmp.txt:173*/
-  {
-    _out = 24;
-    return;
-  }
-  else
-  {
-    _out = 1;
-    return;
-  }
-}
-/*tmp.txt:298*/
-
-void Const13 (ref int _out, ref global bit const13change__ANONYMOUS_s67)/*tmp.txt:298*/
-{
-  _out = 0;
-  if(const13change__ANONYMOUS_s67 == 1)/*tmp.txt:299*/
+  if(const5change__ANONYMOUS_s36 == 1)/*tmp.txt:124*/
   {
     _out = 0;
     return;
@@ -203,419 +96,284 @@ void Const13 (ref int _out, ref global bit const13change__ANONYMOUS_s67)/*tmp.tx
     return;
   }
 }
-/*tmp.txt:306*/
+/*tmp.txt:131*/
 
-void Const14 (ref int _out, ref global bit const14change__ANONYMOUS_s63)/*tmp.txt:306*/
+void Constraint (int input0, int input1, ref global bit coeff0change__ANONYMOUS_s104, ref global bit coeff1change__ANONYMOUS_s97, ref global bit coeff2change__ANONYMOUS_s64, ref global bit const0change__ANONYMOUS_s72, ref global int count__ANONYMOUS_s98, ref global int[100] lineArray__ANONYMOUS_s99, ref global int[100] resultArray__ANONYMOUS_s100, ref global int[100] xArray__ANONYMOUS_s101, ref global int[100] yArray__ANONYMOUS_s102)/*tmp.txt:131*/
 {
-  _out = 0;
-  if(const14change__ANONYMOUS_s63 == 1)/*tmp.txt:307*/
-  {
-    _out = 0;
-    return;
-  }
-  else
-  {
-    _out = 1;
-    return;
-  }
+  int _out_s33 = 0;
+  doubleUp(input0, input1, _out_s33, coeff0change__ANONYMOUS_s104, coeff1change__ANONYMOUS_s97, coeff2change__ANONYMOUS_s64, const0change__ANONYMOUS_s72, count__ANONYMOUS_s98, lineArray__ANONYMOUS_s99, resultArray__ANONYMOUS_s100, xArray__ANONYMOUS_s101, yArray__ANONYMOUS_s102);
+  assert (_out_s33 == (input0 * 2)); //Assert at tmp.txt:132 (1118862544753422184)
 }
-/*tmp.txt:314*/
+/*tmp.txt:131*/
 
-void Constraint (ref global bit coeff0change__ANONYMOUS_s85, ref global bit coeff10change__ANONYMOUS_s86, ref global bit coeff11change__ANONYMOUS_s87, ref global bit coeff1change__ANONYMOUS_s88, ref global bit coeff2change__ANONYMOUS_s89, ref global bit coeff3change__ANONYMOUS_s90, ref global bit coeff5change__ANONYMOUS_s91, ref global bit coeff6change__ANONYMOUS_s92, ref global bit coeff7change__ANONYMOUS_s93, ref global bit coeff8change__ANONYMOUS_s94, ref global bit const0change__ANONYMOUS_s123, ref global bit const13change__ANONYMOUS_s120, ref global bit const14change__ANONYMOUS_s143, ref global bit const1change__ANONYMOUS_s111, ref global int count__ANONYMOUS_s95, ref global int[100] lineArray__ANONYMOUS_s96, ref global int[100] lineOriginalArray__ANONYMOUS_s97, ref global int originalCount__ANONYMOUS_s98, ref global int[100] resultArray__ANONYMOUS_s99, ref global int[100] resultOriginalArray__ANONYMOUS_s100, ref global int[100] xArray__ANONYMOUS_s101, ref global int[100] xOriginalArray__ANONYMOUS_s102, ref global int[100] yArray__ANONYMOUS_s103, ref global int[100] yOriginalArray__ANONYMOUS_s104)/*tmp.txt:314*/
+void Constraint__Wrapper (int input0, int input1)  implements Constraint__WrapperNospec/*tmp.txt:131*/
 {
-  xArray__ANONYMOUS_s101 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-  xOriginalArray__ANONYMOUS_s102 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-  resultArray__ANONYMOUS_s99 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-  resultOriginalArray__ANONYMOUS_s100 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-  yArray__ANONYMOUS_s103 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-  yOriginalArray__ANONYMOUS_s104 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-  lineOriginalArray__ANONYMOUS_s97 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-  lineArray__ANONYMOUS_s96 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-  xArray__ANONYMOUS_s101 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-  xOriginalArray__ANONYMOUS_s102 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-  resultArray__ANONYMOUS_s99 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-  resultOriginalArray__ANONYMOUS_s100 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-  yArray__ANONYMOUS_s103 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-  yOriginalArray__ANONYMOUS_s104 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-  lineOriginalArray__ANONYMOUS_s97 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-  lineArray__ANONYMOUS_s96 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-  count__ANONYMOUS_s95 = -1;
-  originalCount__ANONYMOUS_s98 = -1;
-  int max_s14 = 0;
-  Const13(max_s14, const13change__ANONYMOUS_s120);
-  int max_s16 = 0;
-  Const14(max_s16, const14change__ANONYMOUS_s143);
-  int max_s18 = 0;
-  doubleUp(max_s14, max_s16, max_s18, coeff0change__ANONYMOUS_s85, coeff10change__ANONYMOUS_s86, coeff11change__ANONYMOUS_s87, coeff1change__ANONYMOUS_s88, coeff2change__ANONYMOUS_s89, coeff3change__ANONYMOUS_s90, coeff5change__ANONYMOUS_s91, coeff6change__ANONYMOUS_s92, coeff7change__ANONYMOUS_s93, coeff8change__ANONYMOUS_s94, const0change__ANONYMOUS_s123, const1change__ANONYMOUS_s111, count__ANONYMOUS_s95, lineArray__ANONYMOUS_s96, resultArray__ANONYMOUS_s99, xArray__ANONYMOUS_s101, yArray__ANONYMOUS_s103);
-  int maxOriginal_s20 = 0;
-  Const13(maxOriginal_s20, const13change__ANONYMOUS_s120);
-  int maxOriginal_s22 = 0;
-  Const14(maxOriginal_s22, const14change__ANONYMOUS_s143);
-  int maxOriginal_s24 = 0;
-  doubleUpOriginal(maxOriginal_s20, maxOriginal_s22, maxOriginal_s24, lineOriginalArray__ANONYMOUS_s97, originalCount__ANONYMOUS_s98, resultOriginalArray__ANONYMOUS_s100, xOriginalArray__ANONYMOUS_s102, yOriginalArray__ANONYMOUS_s104);
-  int _out_s26 = 0;
-  Const13(_out_s26, const13change__ANONYMOUS_s120);
-  int _out_s28 = 0;
-  Const14(_out_s28, const14change__ANONYMOUS_s143);
-  assert (max_s18 == (_out_s26 * _out_s28)); //Assert at tmp.txt:340 (-4879418853156120353)
+  global int[100] yArray__ANONYMOUS_s80 = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+  glblInit_yArray__ANONYMOUS_s136(yArray__ANONYMOUS_s80);
+  global int[100] xArray__ANONYMOUS_s79 = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+  glblInit_xArray__ANONYMOUS_s132(xArray__ANONYMOUS_s79);
+  global int[100] resultArray__ANONYMOUS_s78 = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+  glblInit_resultArray__ANONYMOUS_s128(resultArray__ANONYMOUS_s78);
+  global int[100] lineArray__ANONYMOUS_s77 = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+  glblInit_lineArray__ANONYMOUS_s122(lineArray__ANONYMOUS_s77);
+  global int count__ANONYMOUS_s76 = 0;
+  glblInit_count__ANONYMOUS_s120(count__ANONYMOUS_s76);
+  global bit const0change__ANONYMOUS_s96 = 0;
+  glblInit_const0change__ANONYMOUS_s114(const0change__ANONYMOUS_s96);
+  global bit coeff2change__ANONYMOUS_s81 = 0;
+  glblInit_coeff2change__ANONYMOUS_s110(coeff2change__ANONYMOUS_s81);
+  global bit coeff1change__ANONYMOUS_s89 = 0;
+  glblInit_coeff1change__ANONYMOUS_s108(coeff1change__ANONYMOUS_s89);
+  global bit coeff0change__ANONYMOUS_s75 = 0;
+  glblInit_coeff0change__ANONYMOUS_s106(coeff0change__ANONYMOUS_s75);
+  Constraint(input0, input1, coeff0change__ANONYMOUS_s75, coeff1change__ANONYMOUS_s89, coeff2change__ANONYMOUS_s81, const0change__ANONYMOUS_s96, count__ANONYMOUS_s76, lineArray__ANONYMOUS_s77, resultArray__ANONYMOUS_s78, xArray__ANONYMOUS_s79, yArray__ANONYMOUS_s80);
+}
+/*tmp.txt:131*/
+
+void Constraint__WrapperNospec (int input0, int input1)/*tmp.txt:131*/
+{ }
+/*tmp.txt:135*/
+
+void Distance (ref global bit coeff0change__ANONYMOUS_s48, ref global bit coeff1change__ANONYMOUS_s49, ref global bit coeff2change__ANONYMOUS_s50, ref global bit const0change__ANONYMOUS_s93, ref global bit const4change__ANONYMOUS_s88, ref global bit const5change__ANONYMOUS_s87, ref global int count__ANONYMOUS_s51, ref global int[100] lineArray__ANONYMOUS_s52, ref global int[100] lineOriginalArray__ANONYMOUS_s53, ref global int originalCount__ANONYMOUS_s54, ref global int[100] resultArray__ANONYMOUS_s55, ref global int[100] resultOriginalArray__ANONYMOUS_s56, ref global int[100] xArray__ANONYMOUS_s57, ref global int[100] xOriginalArray__ANONYMOUS_s58, ref global int[100] yArray__ANONYMOUS_s59, ref global int[100] yOriginalArray__ANONYMOUS_s60)/*tmp.txt:135*/
+{
+  xArray__ANONYMOUS_s57 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
+  xOriginalArray__ANONYMOUS_s58 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
+  resultArray__ANONYMOUS_s55 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
+  resultOriginalArray__ANONYMOUS_s56 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
+  yArray__ANONYMOUS_s59 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
+  yOriginalArray__ANONYMOUS_s60 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
+  lineOriginalArray__ANONYMOUS_s53 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
+  lineArray__ANONYMOUS_s52 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
+  xArray__ANONYMOUS_s57 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
+  xOriginalArray__ANONYMOUS_s58 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
+  resultArray__ANONYMOUS_s55 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
+  resultOriginalArray__ANONYMOUS_s56 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
+  yArray__ANONYMOUS_s59 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
+  yOriginalArray__ANONYMOUS_s60 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
+  lineOriginalArray__ANONYMOUS_s53 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
+  lineArray__ANONYMOUS_s52 = ((global int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
+  count__ANONYMOUS_s51 = -1;
+  originalCount__ANONYMOUS_s54 = -1;
+  int out_s5 = 0;
+  Const4(out_s5, const4change__ANONYMOUS_s88);
+  int out_s7 = 0;
+  Const5(out_s7, const5change__ANONYMOUS_s87);
+  int out_s9 = 0;
+  doubleUp(out_s5, out_s7, out_s9, coeff0change__ANONYMOUS_s48, coeff1change__ANONYMOUS_s49, coeff2change__ANONYMOUS_s50, const0change__ANONYMOUS_s93, count__ANONYMOUS_s51, lineArray__ANONYMOUS_s52, resultArray__ANONYMOUS_s55, xArray__ANONYMOUS_s57, yArray__ANONYMOUS_s59);
+  int outOriginal_s11 = 0;
+  Const4(outOriginal_s11, const4change__ANONYMOUS_s88);
+  int outOriginal_s13 = 0;
+  Const5(outOriginal_s13, const5change__ANONYMOUS_s87);
+  int outOriginal_s15 = 0;
+  doubleUpOriginal(outOriginal_s11, outOriginal_s13, outOriginal_s15, const0change__ANONYMOUS_s93, lineOriginalArray__ANONYMOUS_s53, originalCount__ANONYMOUS_s54, resultOriginalArray__ANONYMOUS_s56, xOriginalArray__ANONYMOUS_s58, yOriginalArray__ANONYMOUS_s60);
+  int _out_s17 = 0;
+  Const4(_out_s17, const4change__ANONYMOUS_s88);
+  assert (out_s9 == (_out_s17 * 2)); //Assert at tmp.txt:161 (-1662524582800902577)
+  int _out_s19 = 0;
+  Const4(_out_s19, const4change__ANONYMOUS_s88);
+  assert (outOriginal_s15 == (_out_s19 * 2)); //Assert at tmp.txt:162 (7394241325793272780)
   int SemanticDistance = 0;
   for(int i = 0; i < 100; i = i + 1)/*Canonical*/
   {
-    SemanticDistance = SemanticDistance + ((xArray__ANONYMOUS_s101[i]) != (xOriginalArray__ANONYMOUS_s102[i]));
-    SemanticDistance = SemanticDistance + ((resultArray__ANONYMOUS_s99[i]) != (resultOriginalArray__ANONYMOUS_s100[i]));
-    SemanticDistance = SemanticDistance + ((yArray__ANONYMOUS_s103[i]) != (yOriginalArray__ANONYMOUS_s104[i]));
+    SemanticDistance = SemanticDistance + ((xArray__ANONYMOUS_s57[i]) != (xOriginalArray__ANONYMOUS_s58[i]));
+    SemanticDistance = SemanticDistance + ((resultArray__ANONYMOUS_s55[i]) != (resultOriginalArray__ANONYMOUS_s56[i]));
+    SemanticDistance = SemanticDistance + ((yArray__ANONYMOUS_s59[i]) != (yOriginalArray__ANONYMOUS_s60[i]));
   }
-  int SyntacticDistance = coeff0change__ANONYMOUS_s85 + coeff1change__ANONYMOUS_s88;
-  SyntacticDistance = SyntacticDistance + coeff2change__ANONYMOUS_s89;
-  SyntacticDistance = SyntacticDistance + coeff3change__ANONYMOUS_s90;
-  SyntacticDistance = SyntacticDistance + coeff5change__ANONYMOUS_s91;
-  SyntacticDistance = SyntacticDistance + coeff6change__ANONYMOUS_s92;
-  SyntacticDistance = SyntacticDistance + coeff7change__ANONYMOUS_s93;
-  SyntacticDistance = SyntacticDistance + coeff8change__ANONYMOUS_s94;
-  SyntacticDistance = SyntacticDistance + coeff10change__ANONYMOUS_s86;
-  SyntacticDistance = SyntacticDistance + coeff11change__ANONYMOUS_s87;
-  assert (SemanticDistance < 1); //Assert at tmp.txt:362 (8827130066073740377)
+  int SyntacticDistance = coeff0change__ANONYMOUS_s48 + coeff1change__ANONYMOUS_s49;
+  SyntacticDistance = SyntacticDistance + coeff2change__ANONYMOUS_s50;
+  assert (SemanticDistance < 1); //Assert at tmp.txt:175 (1563136624082249661)
   minimize(SyntacticDistance + SemanticDistance)
 }
-/*tmp.txt:314*/
+/*tmp.txt:135*/
 
-void Constraint__Wrapper ()  implements Constraint__WrapperNospec/*tmp.txt:314*/
+void Distance__Wrapper ()  implements Distance__WrapperNospec/*tmp.txt:135*/
 {
-  global int[100] yOriginalArray__ANONYMOUS_s118 = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-  glblInit_yOriginalArray__ANONYMOUS_s198(yOriginalArray__ANONYMOUS_s118);
-  global int[100] yArray__ANONYMOUS_s139 = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-  glblInit_yArray__ANONYMOUS_s196(yArray__ANONYMOUS_s139);
-  global int[100] xOriginalArray__ANONYMOUS_s117 = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-  glblInit_xOriginalArray__ANONYMOUS_s194(xOriginalArray__ANONYMOUS_s117);
-  global int[100] xArray__ANONYMOUS_s138 = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-  glblInit_xArray__ANONYMOUS_s192(xArray__ANONYMOUS_s138);
-  global int[100] resultOriginalArray__ANONYMOUS_s116 = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-  glblInit_resultOriginalArray__ANONYMOUS_s190(resultOriginalArray__ANONYMOUS_s116);
-  global int[100] resultArray__ANONYMOUS_s137 = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-  glblInit_resultArray__ANONYMOUS_s188(resultArray__ANONYMOUS_s137);
-  global int originalCount__ANONYMOUS_s115 = 0;
-  glblInit_originalCount__ANONYMOUS_s186(originalCount__ANONYMOUS_s115);
-  global int[100] lineOriginalArray__ANONYMOUS_s114 = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-  glblInit_lineOriginalArray__ANONYMOUS_s184(lineOriginalArray__ANONYMOUS_s114);
-  global int[100] lineArray__ANONYMOUS_s136 = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-  glblInit_lineArray__ANONYMOUS_s182(lineArray__ANONYMOUS_s136);
-  global int count__ANONYMOUS_s135 = 0;
-  glblInit_count__ANONYMOUS_s180(count__ANONYMOUS_s135);
-  global bit const1change__ANONYMOUS_s126 = 0;
-  glblInit_const1change__ANONYMOUS_s178(const1change__ANONYMOUS_s126);
-  global bit const14change__ANONYMOUS_s129 = 0;
-  glblInit_const14change__ANONYMOUS_s176(const14change__ANONYMOUS_s129);
-  global bit const13change__ANONYMOUS_s134 = 0;
-  glblInit_const13change__ANONYMOUS_s174(const13change__ANONYMOUS_s134);
-  global bit const0change__ANONYMOUS_s133 = 0;
-  glblInit_const0change__ANONYMOUS_s172(const0change__ANONYMOUS_s133);
-  global bit coeff8change__ANONYMOUS_s132 = 0;
-  glblInit_coeff8change__ANONYMOUS_s168(coeff8change__ANONYMOUS_s132);
-  global bit coeff7change__ANONYMOUS_s112 = 0;
-  glblInit_coeff7change__ANONYMOUS_s166(coeff7change__ANONYMOUS_s112);
-  global bit coeff6change__ANONYMOUS_s131 = 0;
-  glblInit_coeff6change__ANONYMOUS_s164(coeff6change__ANONYMOUS_s131);
-  global bit coeff5change__ANONYMOUS_s106 = 0;
-  glblInit_coeff5change__ANONYMOUS_s162(coeff5change__ANONYMOUS_s106);
-  global bit coeff3change__ANONYMOUS_s107 = 0;
-  glblInit_coeff3change__ANONYMOUS_s158(coeff3change__ANONYMOUS_s107);
-  global bit coeff2change__ANONYMOUS_s108 = 0;
-  glblInit_coeff2change__ANONYMOUS_s156(coeff2change__ANONYMOUS_s108);
-  global bit coeff1change__ANONYMOUS_s121 = 0;
-  glblInit_coeff1change__ANONYMOUS_s154(coeff1change__ANONYMOUS_s121);
-  global bit coeff11change__ANONYMOUS_s130 = 0;
-  glblInit_coeff11change__ANONYMOUS_s150(coeff11change__ANONYMOUS_s130);
-  global bit coeff10change__ANONYMOUS_s124 = 0;
-  glblInit_coeff10change__ANONYMOUS_s148(coeff10change__ANONYMOUS_s124);
-  global bit coeff0change__ANONYMOUS_s127 = 0;
-  glblInit_coeff0change__ANONYMOUS_s146(coeff0change__ANONYMOUS_s127);
-  Constraint(coeff0change__ANONYMOUS_s127, coeff10change__ANONYMOUS_s124, coeff11change__ANONYMOUS_s130, coeff1change__ANONYMOUS_s121, coeff2change__ANONYMOUS_s108, coeff3change__ANONYMOUS_s107, coeff5change__ANONYMOUS_s106, coeff6change__ANONYMOUS_s131, coeff7change__ANONYMOUS_s112, coeff8change__ANONYMOUS_s132, const0change__ANONYMOUS_s133, const13change__ANONYMOUS_s134, const14change__ANONYMOUS_s129, const1change__ANONYMOUS_s126, count__ANONYMOUS_s135, lineArray__ANONYMOUS_s136, lineOriginalArray__ANONYMOUS_s114, originalCount__ANONYMOUS_s115, resultArray__ANONYMOUS_s137, resultOriginalArray__ANONYMOUS_s116, xArray__ANONYMOUS_s138, xOriginalArray__ANONYMOUS_s117, yArray__ANONYMOUS_s139, yOriginalArray__ANONYMOUS_s118);
+  global int[100] yOriginalArray__ANONYMOUS_s69 = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+  glblInit_yOriginalArray__ANONYMOUS_s138(yOriginalArray__ANONYMOUS_s69);
+  global int[100] yArray__ANONYMOUS_s86 = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+  glblInit_yArray__ANONYMOUS_s136(yArray__ANONYMOUS_s86);
+  global int[100] xOriginalArray__ANONYMOUS_s68 = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+  glblInit_xOriginalArray__ANONYMOUS_s134(xOriginalArray__ANONYMOUS_s68);
+  global int[100] xArray__ANONYMOUS_s85 = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+  glblInit_xArray__ANONYMOUS_s132(xArray__ANONYMOUS_s85);
+  global int[100] resultOriginalArray__ANONYMOUS_s67 = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+  glblInit_resultOriginalArray__ANONYMOUS_s130(resultOriginalArray__ANONYMOUS_s67);
+  global int[100] resultArray__ANONYMOUS_s84 = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+  glblInit_resultArray__ANONYMOUS_s128(resultArray__ANONYMOUS_s84);
+  global int originalCount__ANONYMOUS_s66 = 0;
+  glblInit_originalCount__ANONYMOUS_s126(originalCount__ANONYMOUS_s66);
+  global int[100] lineOriginalArray__ANONYMOUS_s65 = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+  glblInit_lineOriginalArray__ANONYMOUS_s124(lineOriginalArray__ANONYMOUS_s65);
+  global int[100] lineArray__ANONYMOUS_s83 = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+  glblInit_lineArray__ANONYMOUS_s122(lineArray__ANONYMOUS_s83);
+  global int count__ANONYMOUS_s82 = 0;
+  glblInit_count__ANONYMOUS_s120(count__ANONYMOUS_s82);
+  global bit const5change__ANONYMOUS_s73 = 0;
+  glblInit_const5change__ANONYMOUS_s118(const5change__ANONYMOUS_s73);
+  global bit const4change__ANONYMOUS_s95 = 0;
+  glblInit_const4change__ANONYMOUS_s116(const4change__ANONYMOUS_s95);
+  global bit const0change__ANONYMOUS_s92 = 0;
+  glblInit_const0change__ANONYMOUS_s114(const0change__ANONYMOUS_s92);
+  global bit coeff2change__ANONYMOUS_s71 = 0;
+  glblInit_coeff2change__ANONYMOUS_s110(coeff2change__ANONYMOUS_s71);
+  global bit coeff1change__ANONYMOUS_s63 = 0;
+  glblInit_coeff1change__ANONYMOUS_s108(coeff1change__ANONYMOUS_s63);
+  global bit coeff0change__ANONYMOUS_s70 = 0;
+  glblInit_coeff0change__ANONYMOUS_s106(coeff0change__ANONYMOUS_s70);
+  Distance(coeff0change__ANONYMOUS_s70, coeff1change__ANONYMOUS_s63, coeff2change__ANONYMOUS_s71, const0change__ANONYMOUS_s92, const4change__ANONYMOUS_s95, const5change__ANONYMOUS_s73, count__ANONYMOUS_s82, lineArray__ANONYMOUS_s83, lineOriginalArray__ANONYMOUS_s65, originalCount__ANONYMOUS_s66, resultArray__ANONYMOUS_s84, resultOriginalArray__ANONYMOUS_s67, xArray__ANONYMOUS_s85, xOriginalArray__ANONYMOUS_s68, yArray__ANONYMOUS_s86, yOriginalArray__ANONYMOUS_s69);
 }
-/*tmp.txt:314*/
+/*tmp.txt:135*/
 
-void Constraint__WrapperNospec ()/*tmp.txt:314*/
+void Distance__WrapperNospec ()/*tmp.txt:135*/
 { }
-/*tmp.txt:245*/
+/*tmp.txt:94*/
 
-void doubleUp (int x, int y_0, ref int _out, ref global bit coeff0change__ANONYMOUS_s110, ref global bit coeff10change__ANONYMOUS_s113, ref global bit coeff11change__ANONYMOUS_s144, ref global bit coeff1change__ANONYMOUS_s141, ref global bit coeff2change__ANONYMOUS_s119, ref global bit coeff3change__ANONYMOUS_s140, ref global bit coeff5change__ANONYMOUS_s122, ref global bit coeff6change__ANONYMOUS_s105, ref global bit coeff7change__ANONYMOUS_s142, ref global bit coeff8change__ANONYMOUS_s128, ref global bit const0change__ANONYMOUS_s125, ref global bit const1change__ANONYMOUS_s109, ref global int count__ANONYMOUS_s71, ref global int[100] lineArray__ANONYMOUS_s72, ref global int[100] resultArray__ANONYMOUS_s73, ref global int[100] xArray__ANONYMOUS_s74, ref global int[100] yArray__ANONYMOUS_s75)/*tmp.txt:245*/
+void doubleUp (int x, int y, ref int _out, ref global bit coeff0change__ANONYMOUS_s103, ref global bit coeff1change__ANONYMOUS_s94, ref global bit coeff2change__ANONYMOUS_s91, ref global bit const0change__ANONYMOUS_s90, ref global int count__ANONYMOUS_s37, ref global int[100] lineArray__ANONYMOUS_s38, ref global int[100] resultArray__ANONYMOUS_s39, ref global int[100] xArray__ANONYMOUS_s40, ref global int[100] yArray__ANONYMOUS_s41)/*tmp.txt:94*/
 {
   _out = 0;
-  int y = y_0;
-  count__ANONYMOUS_s71 = count__ANONYMOUS_s71 + 1;
-  lineArray__ANONYMOUS_s72[count__ANONYMOUS_s71] = 5;
-  xArray__ANONYMOUS_s74[count__ANONYMOUS_s71] = x;
-  yArray__ANONYMOUS_s75[count__ANONYMOUS_s71] = y_0;
-  int result_s30 = 0;
-  Coeff0(result_s30, coeff0change__ANONYMOUS_s110);
-  int result_s32 = 0;
-  Coeff1(result_s32, coeff1change__ANONYMOUS_s141);
-  int result_s34 = 0;
-  Coeff2(result_s34, coeff2change__ANONYMOUS_s119);
-  int result_s36 = 0;
-  Coeff3(result_s36, coeff3change__ANONYMOUS_s140);
-  int result_s38 = 0;
-  Coeff4(result_s38);
-  _out = (((result_s30 * x) + (result_s32 * x)) + (result_s34 * y_0)) + (result_s36 * result_s38);
-  count__ANONYMOUS_s71 = count__ANONYMOUS_s71 + 1;
-  lineArray__ANONYMOUS_s72[count__ANONYMOUS_s71] = 6;
-  xArray__ANONYMOUS_s74[count__ANONYMOUS_s71] = x;
-  resultArray__ANONYMOUS_s73[count__ANONYMOUS_s71] = _out;
-  yArray__ANONYMOUS_s75[count__ANONYMOUS_s71] = y_0;
-  int __sa0_s40 = 0;
-  Const0(__sa0_s40, const0change__ANONYMOUS_s125);
-  bit __sa0;
-  __sa0 = x > __sa0_s40;
-  while(__sa0)
-  {
-    count__ANONYMOUS_s71 = count__ANONYMOUS_s71 + 1;
-    lineArray__ANONYMOUS_s72[count__ANONYMOUS_s71] = 7;
-    xArray__ANONYMOUS_s74[count__ANONYMOUS_s71] = x;
-    resultArray__ANONYMOUS_s73[count__ANONYMOUS_s71] = _out;
-    yArray__ANONYMOUS_s75[count__ANONYMOUS_s71] = y;
-    int result_s42 = 0;
-    Coeff5(result_s42, coeff5change__ANONYMOUS_s122);
-    int result_s44 = 0;
-    Coeff6(result_s44, coeff6change__ANONYMOUS_s105);
-    int result_s46 = 0;
-    Coeff7(result_s46, coeff7change__ANONYMOUS_s142);
-    int result_s48 = 0;
-    Coeff8(result_s48, coeff8change__ANONYMOUS_s128);
-    int result_s50 = 0;
-    Coeff9(result_s50);
-    _out = _out + ((((result_s42 * x) + (result_s44 * x)) + (result_s46 * y)) + (result_s48 * result_s50));
-    count__ANONYMOUS_s71 = count__ANONYMOUS_s71 + 1;
-    lineArray__ANONYMOUS_s72[count__ANONYMOUS_s71] = 8;
-    xArray__ANONYMOUS_s74[count__ANONYMOUS_s71] = x;
-    resultArray__ANONYMOUS_s73[count__ANONYMOUS_s71] = _out;
-    yArray__ANONYMOUS_s75[count__ANONYMOUS_s71] = y;
-    int y_s52 = 0;
-    Const1(y_s52, const1change__ANONYMOUS_s109);
-    int y_s54 = 0;
-    Coeff10(y_s54, coeff10change__ANONYMOUS_s113);
-    int y_s56 = 0;
-    Coeff11(y_s56, coeff11change__ANONYMOUS_s144);
-    int y_s58 = 0;
-    Coeff12(y_s58);
-    y = y - ((y_s52 + (y_s54 * x)) + (y_s56 * y_s58));
-    count__ANONYMOUS_s71 = count__ANONYMOUS_s71 + 1;
-    lineArray__ANONYMOUS_s72[count__ANONYMOUS_s71] = 8;
-    xArray__ANONYMOUS_s74[count__ANONYMOUS_s71] = x;
-    resultArray__ANONYMOUS_s73[count__ANONYMOUS_s71] = _out;
-    yArray__ANONYMOUS_s75[count__ANONYMOUS_s71] = y;
-    int __sa0_s60 = 0;
-    Const0(__sa0_s60, const0change__ANONYMOUS_s125);
-    __sa0 = x > __sa0_s60;
-  }
-  count__ANONYMOUS_s71 = count__ANONYMOUS_s71 + 1;
-  lineArray__ANONYMOUS_s72[count__ANONYMOUS_s71] = 10;
-  xArray__ANONYMOUS_s74[count__ANONYMOUS_s71] = x;
-  yArray__ANONYMOUS_s75[count__ANONYMOUS_s71] = y;
+  count__ANONYMOUS_s37 = count__ANONYMOUS_s37 + 1;
+  lineArray__ANONYMOUS_s38[count__ANONYMOUS_s37] = 5;
+  xArray__ANONYMOUS_s40[count__ANONYMOUS_s37] = x;
+  yArray__ANONYMOUS_s41[count__ANONYMOUS_s37] = y;
+  int result_s23 = 0;
+  Const0(result_s23, const0change__ANONYMOUS_s90);
+  int result_s25 = 0;
+  Coeff0(result_s25, coeff0change__ANONYMOUS_s103);
+  int result_s27 = 0;
+  Coeff1(result_s27, coeff1change__ANONYMOUS_s94);
+  int result_s29 = 0;
+  Coeff2(result_s29, coeff2change__ANONYMOUS_s91);
+  int result_s31 = 0;
+  Coeff3(result_s31);
+  _out = (((x * result_s23) + (result_s25 * x)) + (result_s27 * y)) + (result_s29 * result_s31);
+  count__ANONYMOUS_s37 = count__ANONYMOUS_s37 + 1;
+  lineArray__ANONYMOUS_s38[count__ANONYMOUS_s37] = 6;
+  xArray__ANONYMOUS_s40[count__ANONYMOUS_s37] = x;
+  resultArray__ANONYMOUS_s39[count__ANONYMOUS_s37] = _out;
+  yArray__ANONYMOUS_s41[count__ANONYMOUS_s37] = y;
   return;
 }
-/*tmp.txt:195*/
+/*tmp.txt:76*/
 
-void doubleUpOriginal (int x, int y_0, ref int _out, ref global int[100] lineOriginalArray__ANONYMOUS_s76, ref global int originalCount__ANONYMOUS_s77, ref global int[100] resultOriginalArray__ANONYMOUS_s78, ref global int[100] xOriginalArray__ANONYMOUS_s79, ref global int[100] yOriginalArray__ANONYMOUS_s80)/*tmp.txt:195*/
+void doubleUpOriginal (int x, int y, ref int _out, ref global bit const0change__ANONYMOUS_s74, ref global int[100] lineOriginalArray__ANONYMOUS_s43, ref global int originalCount__ANONYMOUS_s44, ref global int[100] resultOriginalArray__ANONYMOUS_s45, ref global int[100] xOriginalArray__ANONYMOUS_s46, ref global int[100] yOriginalArray__ANONYMOUS_s47)/*tmp.txt:76*/
 {
   _out = 0;
-  int y = y_0;
-  originalCount__ANONYMOUS_s77 = originalCount__ANONYMOUS_s77 + 1;
-  lineOriginalArray__ANONYMOUS_s76[originalCount__ANONYMOUS_s77] = 5;
-  xOriginalArray__ANONYMOUS_s79[originalCount__ANONYMOUS_s77] = x;
-  yOriginalArray__ANONYMOUS_s80[originalCount__ANONYMOUS_s77] = y_0;
-  _out = x;
-  originalCount__ANONYMOUS_s77 = originalCount__ANONYMOUS_s77 + 1;
-  lineOriginalArray__ANONYMOUS_s76[originalCount__ANONYMOUS_s77] = 6;
-  xOriginalArray__ANONYMOUS_s79[originalCount__ANONYMOUS_s77] = x;
-  resultOriginalArray__ANONYMOUS_s78[originalCount__ANONYMOUS_s77] = x;
-  yOriginalArray__ANONYMOUS_s80[originalCount__ANONYMOUS_s77] = y_0;
-  while(x > 1)
-  {
-    originalCount__ANONYMOUS_s77 = originalCount__ANONYMOUS_s77 + 1;
-    lineOriginalArray__ANONYMOUS_s76[originalCount__ANONYMOUS_s77] = 7;
-    xOriginalArray__ANONYMOUS_s79[originalCount__ANONYMOUS_s77] = x;
-    resultOriginalArray__ANONYMOUS_s78[originalCount__ANONYMOUS_s77] = _out;
-    yOriginalArray__ANONYMOUS_s80[originalCount__ANONYMOUS_s77] = y;
-    _out = _out + x;
-    originalCount__ANONYMOUS_s77 = originalCount__ANONYMOUS_s77 + 1;
-    lineOriginalArray__ANONYMOUS_s76[originalCount__ANONYMOUS_s77] = 8;
-    xOriginalArray__ANONYMOUS_s79[originalCount__ANONYMOUS_s77] = x;
-    resultOriginalArray__ANONYMOUS_s78[originalCount__ANONYMOUS_s77] = _out;
-    yOriginalArray__ANONYMOUS_s80[originalCount__ANONYMOUS_s77] = y;
-    y = y - 1;
-    originalCount__ANONYMOUS_s77 = originalCount__ANONYMOUS_s77 + 1;
-    lineOriginalArray__ANONYMOUS_s76[originalCount__ANONYMOUS_s77] = 8;
-    xOriginalArray__ANONYMOUS_s79[originalCount__ANONYMOUS_s77] = x;
-    resultOriginalArray__ANONYMOUS_s78[originalCount__ANONYMOUS_s77] = _out;
-    yOriginalArray__ANONYMOUS_s80[originalCount__ANONYMOUS_s77] = y;
-  }
-  originalCount__ANONYMOUS_s77 = originalCount__ANONYMOUS_s77 + 1;
-  lineOriginalArray__ANONYMOUS_s76[originalCount__ANONYMOUS_s77] = 10;
-  xOriginalArray__ANONYMOUS_s79[originalCount__ANONYMOUS_s77] = x;
-  yOriginalArray__ANONYMOUS_s80[originalCount__ANONYMOUS_s77] = y;
+  originalCount__ANONYMOUS_s44 = originalCount__ANONYMOUS_s44 + 1;
+  lineOriginalArray__ANONYMOUS_s43[originalCount__ANONYMOUS_s44] = 5;
+  xOriginalArray__ANONYMOUS_s46[originalCount__ANONYMOUS_s44] = x;
+  yOriginalArray__ANONYMOUS_s47[originalCount__ANONYMOUS_s44] = y;
+  int result_s21 = 0;
+  Const0(result_s21, const0change__ANONYMOUS_s74);
+  _out = x * result_s21;
+  originalCount__ANONYMOUS_s44 = originalCount__ANONYMOUS_s44 + 1;
+  lineOriginalArray__ANONYMOUS_s43[originalCount__ANONYMOUS_s44] = 6;
+  xOriginalArray__ANONYMOUS_s46[originalCount__ANONYMOUS_s44] = x;
+  resultOriginalArray__ANONYMOUS_s45[originalCount__ANONYMOUS_s44] = _out;
+  yOriginalArray__ANONYMOUS_s47[originalCount__ANONYMOUS_s44] = y;
   return;
 }
-/*tmp.txt:5*/
+/*tmp.txt:3*/
 
-void glblInit_coeff0change__ANONYMOUS_s146 (ref bit coeff0change__ANONYMOUS_s145)/*tmp.txt:5*/
+void glblInit_coeff0change__ANONYMOUS_s106 (ref bit coeff0change__ANONYMOUS_s105)/*tmp.txt:3*/
 {
-  coeff0change__ANONYMOUS_s145 = 0;
+  coeff0change__ANONYMOUS_s105 = 0;
 }
-/*tmp.txt:127*/
+/*tmp.txt:16*/
 
-void glblInit_coeff10change__ANONYMOUS_s148 (ref bit coeff10change__ANONYMOUS_s147)/*tmp.txt:127*/
+void glblInit_coeff1change__ANONYMOUS_s108 (ref bit coeff1change__ANONYMOUS_s107)/*tmp.txt:16*/
 {
-  coeff10change__ANONYMOUS_s147 = 0;
+  coeff1change__ANONYMOUS_s107 = 0;
 }
-/*tmp.txt:140*/
+/*tmp.txt:29*/
 
-void glblInit_coeff11change__ANONYMOUS_s150 (ref bit coeff11change__ANONYMOUS_s149)/*tmp.txt:140*/
+void glblInit_coeff2change__ANONYMOUS_s110 (ref bit coeff2change__ANONYMOUS_s109)/*tmp.txt:29*/
 {
-  coeff11change__ANONYMOUS_s149 = 0;
+  coeff2change__ANONYMOUS_s109 = 0;
 }
-/*tmp.txt:153*/
+/*tmp.txt:42*/
 
-void glblInit_coeff12change__ANONYMOUS_s152 (ref int coeff12change__ANONYMOUS_s151)/*tmp.txt:153*/
+void glblInit_coeff3change__ANONYMOUS_s112 (ref int coeff3change__ANONYMOUS_s111)/*tmp.txt:42*/
 {
-  coeff12change__ANONYMOUS_s151 = 0;
+  coeff3change__ANONYMOUS_s111 = 0;
 }
-/*tmp.txt:18*/
+/*tmp.txt:52*/
 
-void glblInit_coeff1change__ANONYMOUS_s154 (ref bit coeff1change__ANONYMOUS_s153)/*tmp.txt:18*/
+void glblInit_const0change__ANONYMOUS_s114 (ref bit const0change__ANONYMOUS_s113)/*tmp.txt:52*/
 {
-  coeff1change__ANONYMOUS_s153 = 0;
+  const0change__ANONYMOUS_s113 = 1;
 }
-/*tmp.txt:31*/
+/*tmp.txt:114*/
 
-void glblInit_coeff2change__ANONYMOUS_s156 (ref bit coeff2change__ANONYMOUS_s155)/*tmp.txt:31*/
+void glblInit_const4change__ANONYMOUS_s116 (ref bit const4change__ANONYMOUS_s115)/*tmp.txt:114*/
 {
-  coeff2change__ANONYMOUS_s155 = 0;
+  const4change__ANONYMOUS_s115 = 1;
 }
-/*tmp.txt:44*/
+/*tmp.txt:122*/
 
-void glblInit_coeff3change__ANONYMOUS_s158 (ref bit coeff3change__ANONYMOUS_s157)/*tmp.txt:44*/
+void glblInit_const5change__ANONYMOUS_s118 (ref bit const5change__ANONYMOUS_s117)/*tmp.txt:122*/
 {
-  coeff3change__ANONYMOUS_s157 = 0;
+  const5change__ANONYMOUS_s117 = 1;
 }
-/*tmp.txt:57*/
+/*tmp.txt:73*/
 
-void glblInit_coeff4change__ANONYMOUS_s160 (ref int coeff4change__ANONYMOUS_s159)/*tmp.txt:57*/
+void glblInit_count__ANONYMOUS_s120 (ref int count__ANONYMOUS_s119)/*tmp.txt:73*/
 {
-  coeff4change__ANONYMOUS_s159 = 0;
+  count__ANONYMOUS_s119 = -1;
 }
-/*tmp.txt:66*/
+/*tmp.txt:61*/
 
-void glblInit_coeff5change__ANONYMOUS_s162 (ref bit coeff5change__ANONYMOUS_s161)/*tmp.txt:66*/
+void glblInit_lineArray__ANONYMOUS_s122 (ref int[100] lineArray__ANONYMOUS_s121)/*tmp.txt:61*/
 {
-  coeff5change__ANONYMOUS_s161 = 0;
+  lineArray__ANONYMOUS_s121 = ((int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
 }
-/*tmp.txt:79*/
+/*tmp.txt:67*/
 
-void glblInit_coeff6change__ANONYMOUS_s164 (ref bit coeff6change__ANONYMOUS_s163)/*tmp.txt:79*/
+void glblInit_lineOriginalArray__ANONYMOUS_s124 (ref int[100] lineOriginalArray__ANONYMOUS_s123)/*tmp.txt:67*/
 {
-  coeff6change__ANONYMOUS_s163 = 0;
+  lineOriginalArray__ANONYMOUS_s123 = ((int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
 }
-/*tmp.txt:92*/
+/*tmp.txt:74*/
 
-void glblInit_coeff7change__ANONYMOUS_s166 (ref bit coeff7change__ANONYMOUS_s165)/*tmp.txt:92*/
+void glblInit_originalCount__ANONYMOUS_s126 (ref int originalCount__ANONYMOUS_s125)/*tmp.txt:74*/
 {
-  coeff7change__ANONYMOUS_s165 = 0;
+  originalCount__ANONYMOUS_s125 = -1;
 }
-/*tmp.txt:105*/
+/*tmp.txt:63*/
 
-void glblInit_coeff8change__ANONYMOUS_s168 (ref bit coeff8change__ANONYMOUS_s167)/*tmp.txt:105*/
+void glblInit_resultArray__ANONYMOUS_s128 (ref int[100] resultArray__ANONYMOUS_s127)/*tmp.txt:63*/
 {
-  coeff8change__ANONYMOUS_s167 = 0;
+  resultArray__ANONYMOUS_s127 = ((int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
 }
-/*tmp.txt:118*/
+/*tmp.txt:69*/
 
-void glblInit_coeff9change__ANONYMOUS_s170 (ref int coeff9change__ANONYMOUS_s169)/*tmp.txt:118*/
+void glblInit_resultOriginalArray__ANONYMOUS_s130 (ref int[100] resultOriginalArray__ANONYMOUS_s129)/*tmp.txt:69*/
 {
-  coeff9change__ANONYMOUS_s169 = 0;
+  resultOriginalArray__ANONYMOUS_s129 = ((int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
 }
-/*tmp.txt:163*/
+/*tmp.txt:62*/
 
-void glblInit_const0change__ANONYMOUS_s172 (ref bit const0change__ANONYMOUS_s171)/*tmp.txt:163*/
+void glblInit_xArray__ANONYMOUS_s132 (ref int[100] xArray__ANONYMOUS_s131)/*tmp.txt:62*/
 {
-  const0change__ANONYMOUS_s171 = 1;
+  xArray__ANONYMOUS_s131 = ((int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
 }
-/*tmp.txt:297*/
+/*tmp.txt:68*/
 
-void glblInit_const13change__ANONYMOUS_s174 (ref bit const13change__ANONYMOUS_s173)/*tmp.txt:297*/
+void glblInit_xOriginalArray__ANONYMOUS_s134 (ref int[100] xOriginalArray__ANONYMOUS_s133)/*tmp.txt:68*/
 {
-  const13change__ANONYMOUS_s173 = 1;
+  xOriginalArray__ANONYMOUS_s133 = ((int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
 }
-/*tmp.txt:305*/
+/*tmp.txt:64*/
 
-void glblInit_const14change__ANONYMOUS_s176 (ref bit const14change__ANONYMOUS_s175)/*tmp.txt:305*/
+void glblInit_yArray__ANONYMOUS_s136 (ref int[100] yArray__ANONYMOUS_s135)/*tmp.txt:64*/
 {
-  const14change__ANONYMOUS_s175 = 1;
+  yArray__ANONYMOUS_s135 = ((int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
 }
-/*tmp.txt:171*/
+/*tmp.txt:70*/
 
-void glblInit_const1change__ANONYMOUS_s178 (ref bit const1change__ANONYMOUS_s177)/*tmp.txt:171*/
+void glblInit_yOriginalArray__ANONYMOUS_s138 (ref int[100] yOriginalArray__ANONYMOUS_s137)/*tmp.txt:70*/
 {
-  const1change__ANONYMOUS_s177 = 0;
-}
-/*tmp.txt:192*/
-
-void glblInit_count__ANONYMOUS_s180 (ref int count__ANONYMOUS_s179)/*tmp.txt:192*/
-{
-  count__ANONYMOUS_s179 = -1;
-}
-/*tmp.txt:180*/
-
-void glblInit_lineArray__ANONYMOUS_s182 (ref int[100] lineArray__ANONYMOUS_s181)/*tmp.txt:180*/
-{
-  lineArray__ANONYMOUS_s181 = ((int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-}
-/*tmp.txt:186*/
-
-void glblInit_lineOriginalArray__ANONYMOUS_s184 (ref int[100] lineOriginalArray__ANONYMOUS_s183)/*tmp.txt:186*/
-{
-  lineOriginalArray__ANONYMOUS_s183 = ((int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-}
-/*tmp.txt:193*/
-
-void glblInit_originalCount__ANONYMOUS_s186 (ref int originalCount__ANONYMOUS_s185)/*tmp.txt:193*/
-{
-  originalCount__ANONYMOUS_s185 = -1;
-}
-/*tmp.txt:182*/
-
-void glblInit_resultArray__ANONYMOUS_s188 (ref int[100] resultArray__ANONYMOUS_s187)/*tmp.txt:182*/
-{
-  resultArray__ANONYMOUS_s187 = ((int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-}
-/*tmp.txt:188*/
-
-void glblInit_resultOriginalArray__ANONYMOUS_s190 (ref int[100] resultOriginalArray__ANONYMOUS_s189)/*tmp.txt:188*/
-{
-  resultOriginalArray__ANONYMOUS_s189 = ((int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-}
-/*tmp.txt:181*/
-
-void glblInit_xArray__ANONYMOUS_s192 (ref int[100] xArray__ANONYMOUS_s191)/*tmp.txt:181*/
-{
-  xArray__ANONYMOUS_s191 = ((int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-}
-/*tmp.txt:187*/
-
-void glblInit_xOriginalArray__ANONYMOUS_s194 (ref int[100] xOriginalArray__ANONYMOUS_s193)/*tmp.txt:187*/
-{
-  xOriginalArray__ANONYMOUS_s193 = ((int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-}
-/*tmp.txt:183*/
-
-void glblInit_yArray__ANONYMOUS_s196 (ref int[100] yArray__ANONYMOUS_s195)/*tmp.txt:183*/
-{
-  yArray__ANONYMOUS_s195 = ((int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
-}
-/*tmp.txt:189*/
-
-void glblInit_yOriginalArray__ANONYMOUS_s198 (ref int[100] yOriginalArray__ANONYMOUS_s197)/*tmp.txt:189*/
-{
-  yOriginalArray__ANONYMOUS_s197 = ((int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
+  yOriginalArray__ANONYMOUS_s137 = ((int[100]){0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0});
 }
 /* END PACKAGE ANONYMOUS*/
 [SKETCH] DONE
-Total time = 12814
+Total time = 688

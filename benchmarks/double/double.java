@@ -2,11 +2,7 @@ public class Main
 {
 	public static int doubleUp(int x, int y)
 	{
-		int result = x;
-		while(x > 1){
-			result += x;
-			y -= 1;
-		}
+		int result = x*5;
 		return result;
 	}
 

@@ -6,9 +6,13 @@ public class SketchResult {
 
 	Map<Integer, Integer> Result;
 	Set<Integer> valid_Set;
-	SketchResult(Map<Integer,Integer> r, Set<Integer> l){
+	Map<Integer, Integer> constResult;
+	Set<Integer> constValidSet;
+	SketchResult(Map<Integer,Integer> r, Set<Integer> l, Map<Integer, Integer> constResult, Set<Integer> constValidSet){
 		this.Result = r;
 		this.valid_Set = l;
+		this.constResult = constResult;
+		this.constValidSet = constValidSet;
 	}
 	
 	Map<Integer, Integer> getResult(){ return this.Result;}

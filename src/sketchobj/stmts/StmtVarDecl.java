@@ -66,7 +66,19 @@ public class StmtVarDecl extends Statement {
 
 	@Override
 	public StmtVarDecl clone() {
-		return new StmtVarDecl(this.types, this.names, this.inits, this.getLineNumber());
+		List<Type> typesClone = new ArrayList<Type>();
+		for (Type t : this.types) {
+			typesClone.add(t);
+		}
+		List<String> namesClone = new ArrayList<String>();
+		for (String s : this.names) {
+			namesClone.add(s);
+		}
+		List<Expression> initsClone = new ArrayList<Expression>();
+		for (Expression e : this.inits) {
+			initsClone.add(e);
+		}
+		return new StmtVarDecl(typesClone, namesClone, initsClone, this.getLineNumber());
 	}
 
 	/**
