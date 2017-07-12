@@ -16,8 +16,10 @@ public class StmtBlock extends Statement {
 	public List<Statement> stmts;
 
 	public StmtBlock(List<? extends Statement> stmts) {
-		for(Statement s:stmts)
-			s.setParent(this);
+		for(Statement s:stmts) {
+			if(s != null)
+				s.setParent(this);
+		}
 		this.stmts = Collections.unmodifiableList(stmts);
 	}
 	
@@ -33,7 +35,8 @@ public class StmtBlock extends Statement {
 	public StmtBlock clone(){
 		List<Statement> newStmts = new ArrayList<Statement>();
 		for(Statement s: stmts){
-			newStmts.add(s.clone());
+			if(s != null)
+				newStmts.add(s.clone());
 		}
 		return new StmtBlock(newStmts);
 	}
@@ -96,7 +99,7 @@ public class StmtBlock extends Statement {
 		prectx = new Context(prectx);
 		Context postctx = new Context(prectx);
 		for (int i = 1; i < this.stmts.size(); i++) {
-			System.out.println(stmts.get(i-1).getClass());
+			//System.out.println(stmts.get(i-1).getClass());
 			postctx = stmts.get(i - 1).buildContext(postctx, sposition, originalStatements);
 		}
 		postctx = this.stmts.get(this.stmts.size()-1).buildContext(postctx, sposition, originalStatements);

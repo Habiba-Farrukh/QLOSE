@@ -19,7 +19,6 @@ public abstract class Expression extends SketchNode{
 	private Type t;
 	private boolean LCadded;
 	
-	
 	public Integer getIValue() {
 		// TODO Auto-generated method stub
 		return null;

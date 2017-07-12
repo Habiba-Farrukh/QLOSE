@@ -76,7 +76,7 @@ public class StmtVarDecl extends Statement {
 		}
 		List<Expression> initsClone = new ArrayList<Expression>();
 		for (Expression e : this.inits) {
-			initsClone.add(e);
+			initsClone.add(e.clone());
 		}
 		return new StmtVarDecl(typesClone, namesClone, initsClone, this.getLineNumber());
 	}

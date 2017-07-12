@@ -531,5 +531,4 @@ public class ExprBinary extends Expression {
 		}
 		return new ConstData(null, new ArrayList<SketchObject>(), index, 0, null, 0);
 	}
-
 }

@@ -36,7 +36,7 @@ public class ExprField extends Expression
 
 	@Override
 	public ExprField clone() {
-		return new ExprField(this.left, this.name, this.hole);
+		return new ExprField(this.left.clone(), this.name, this.hole);
 	}
 
 

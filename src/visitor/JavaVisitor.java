@@ -548,7 +548,10 @@ public class JavaVisitor extends simpleJavaBaseVisitor<SketchObject> {
 	public Statement visitStatementNoShortIf(simpleJavaParser.StatementNoShortIfContext ctx) {
 		return (Statement) visit(ctx.getChild(0));
 	}
-
+	@Override
+	public Statement visitAssertStatement(simpleJavaParser.AssertStatementContext ctx) {
+		return (Statement) visit(ctx.getChild(0)); 
+	}
 	// ---------- expression ----------
 	@Override
 	public Expression visitExpression(simpleJavaParser.ExpressionContext ctx) {

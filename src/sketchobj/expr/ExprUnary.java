@@ -66,7 +66,7 @@ public class ExprUnary extends Expression
     }
 	@Override
 	public ExprUnary clone() {
-		return new ExprUnary(this.op, this.expr, this.line);
+		return new ExprUnary(this.op, this.expr.clone(), this.line);
 	}
 
   

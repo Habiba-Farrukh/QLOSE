@@ -74,10 +74,10 @@ public class Main {
 	
 	public void synthesize(String script, ConstraintFactory cf,
 			Statement targetStmt) throws InterruptedException {
-		List<ExternalFunction> externalFuncs = ConstraintFactory.externalFuncs;
+		List<ExternalFunction> externalFuncs = cf.externalFuncs;
 
 		System.out.println(script);
-		System.out.println("...................."+ConstraintFactory.coeffIndexToLine+"-----------------------------------");
+		System.out.println("...................."+cf.coeffIndexToLine+"-----------------------------------");
 
 		// no external Functions
 		if (externalFuncs.size() == 0) {
@@ -85,20 +85,21 @@ public class Main {
 			SketchResult resultS = CallSketch.CallByString(script);
 			Map<Integer, Integer> result = resultS.Result;
 			Map<Integer, Integer> constResult = resultS.constResult;
+			System.out.println("Result is: " + result);
 
-			System.out.println(constResult);
+			System.out.println("ConstResult is: " + constResult);
 			Set<Integer> validIndexSet = resultS.valid_Set;
 			Set<Integer> validConst	   = resultS.constValidSet;
 			List<Integer> indexset = new ArrayList<Integer>();
-			System.out.println(validConst);
+			System.out.println("Valid Const is: " + validConst);
 			indexset.addAll(result.keySet());
 			List<Integer> constIndexSet = new ArrayList<Integer>();
 			constIndexSet.addAll(constResult.keySet());
 			Map<Integer, List<Integer>> lineToCoeff = new HashMap<Integer, List<Integer>>();
 			Map<Integer, List<Integer>> lineToConst = new HashMap<Integer, List<Integer>>();
 
-			for (int coeff : ConstraintFactory.coeffIndexToLine.keySet()) {
-				int line = ConstraintFactory.coeffIndexToLine.get(coeff);
+			for (int coeff : cf.coeffIndexToLine.keySet()) {
+				int line = cf.coeffIndexToLine.get(coeff);
 				if (validIndexSet.contains(coeff)) {
 					if (lineToCoeff.containsKey(line))
 						lineToCoeff.get(line).add(coeff);
@@ -107,8 +108,9 @@ public class Main {
 					}
 				}
 			}
-			for (int constNo : ConstraintFactory.constMapLine.keySet()) {
-				int line = ConstraintFactory.constMapLine.get(constNo);
+			for (int constNo : cf.constMapLine.keySet()) {
+				int line = cf.constMapLine.get(constNo);
+				if (validIndexSet.contains(constNo)) {	
 					if (lineToConst.containsKey(line))
 						lineToConst.get(line).add(constNo);
 					else {
@@ -116,9 +118,11 @@ public class Main {
 						l.add(constNo);
 						lineToConst.put(line, l);
 					}
+			
+				}
 			}
-			System.out.println(lineToCoeff);
-			System.out.println(lineToConst);
+			System.out.println("Line to Coeff: " + lineToCoeff);
+			System.out.println("Line to Const: " + lineToConst);
 			Map<Integer, String> repair = new HashMap<Integer, String>();
 			int tmpLine = -1;
 /*			for (int k : result.keySet()) {
@@ -131,11 +135,12 @@ public class Main {
 				String stmtString = ConstraintFactory.lineToString.get(tmpLine);
 				repair.put(tmpLine, replaceCoeff(stmtString, result, ConstraintFactory.coeffIndexToLine, tmpLine));
 			}*/
-			for (int line : ConstraintFactory.lineToString.keySet()) {
+			for (int line : cf.lineToString.keySet()) {
 				if (lineToCoeff.containsKey(line) || lineToConst.containsKey(line)){
-					String stmtString = ConstraintFactory.lineToString.get(line);
-					repair.put(line, replaceCoeff(stmtString, result, constResult, ConstraintFactory.coeffIndexToLine,
-							ConstraintFactory.constMapLine, line));
+					String stmtString = cf.lineToString.get(line);
+					System.out.println("Line "+ line +"is : " + stmtString);
+					repair.put(line, replaceCoeff(stmtString, result, constResult, cf.coeffIndexToLine,
+							cf.constMapLine, line));
 				}
 			}
 			System.out.println(repair);
@@ -171,8 +176,10 @@ public class Main {
 				rangedCoeff.add(k);
 		}
 		for (int k : constMapLine.keySet()) {
-			if (constMapLine.get(k) == tmpLine)
+			if (constMapLine.get(k) == tmpLine) {
+				System.out.println(k);
 				rangedConst.add(k);
+			}
 		}
 		for (int c : rangedCoeff) {
 			if (result.containsKey(c))
@@ -182,13 +189,18 @@ public class Main {
 
 		}
 		for (int c : rangedConst) {
-			if (constResult.containsKey(c))
+			if (constResult.containsKey(c)) {
+				System.out.println(stmtString);
+
 				stmtString = stmtString.replace("(Const" + c + "())", constResult.get(c).toString());
+				System.out.println(stmtString);
+
+			}
 			else
 				stmtString = stmtString.replace("(Const" + c + "())", "0");
 
 		}
-		
+		System.out.println(stmtString);
 		stmtString = simplifyByCAS(stmtString);
 
 		return stmtString;
@@ -284,9 +296,9 @@ public class Main {
 	}
 
 	public static void main(String[] args) throws FileNotFoundException, InterruptedException {
-	    String incorrectProgram = new Scanner(new File("benchmarks/double/double.java")).useDelimiter("\\Z").next();
-	    String[] examples   = {"x=2, 4", "x=3, 9", "x=4, 16"};
-		Main m					= new Main(incorrectProgram, examples, "doubleUp", 1);
+	    String incorrectProgram = new Scanner(new File("benchmarks/max3/max3.java")).useDelimiter("\\Z").next();
+	    String[] examples   	= {"x=1, y=2, z=3, 3", "x=3, y=2, z=1, 3", "x=5, y=8, z=1, 8"};
+		Main m					= new Main(incorrectProgram, examples, "max3", 1);
 		m.begin();
 	}
 }
