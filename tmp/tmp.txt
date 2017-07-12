@@ -167,6 +167,10 @@ return 1;
 }}
 
 
+harness void Constraint(int input0, int input1){
+assert ((doubleUp(input0, input1)) == (input0 * input1));
+}
+
 harness void Distance(){
 int SyntacticDistance = 0;
 int SemanticDistance = 0;
@@ -212,8 +216,4 @@ SyntacticDistance += coeff6change;
 
 assert (SemanticDistance < 1);
 minimize(SyntacticDistance+SemanticDistance);
-}
-
-harness void Constraint(int input0, int input1){
-assert ((doubleUp(input0, input1)) == (input0 * input1));
 }

@@ -1,3 +1,2 @@
 SKETCH version 1.7.2
 Benchmark = tmp.txt
-Total time = 615
