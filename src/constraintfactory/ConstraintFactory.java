@@ -28,8 +28,8 @@ public class ConstraintFactory {
 	public String distanceOperator;
 
 	List<List<Expression>> inputs = new ArrayList<List<Expression>>();
-	List<Expression>  outputs    = new ArrayList<Expression>();
-	List<Expression> in          = new ArrayList<Expression>();
+	List<Expression>    outputs      = new ArrayList<Expression>();
+	List<Expression> in                  = new ArrayList<Expression>();
 
 	// map from coefficient index to line number in the code
 	public Map<Integer, Integer> coeffIndexToLine = new HashMap<Integer, Integer>();
@@ -44,29 +44,29 @@ public class ConstraintFactory {
 	public Map<Integer, Integer> constMapLine = new HashMap<Integer, Integer>();
 
 
-	int numberOfConstants = 0;  // number of constants in code
-	Integer numLines    = -1; // number of lines in code
-	Integer coeffIndex    = 0;  // number  of coefficients
-	List<Integer> noWeightCoeff     = new ArrayList<Integer>();
-	Map<String, Type> namesToType = new HashMap<String, Type>();
-	List<String> varsList       = new ArrayList<String>();
-	Integer length          = 100;  // sketch bound
+	int numberOfConstants   = 0;  // number of constants in code
+	Integer numLines        = -1; // number of lines in code
+	Integer coeffIndex      = 0;  // number  of coefficients
+	List<Integer> noWeightCoeff         = new ArrayList<Integer>();
+	Map<String, Type> namesToType   = new HashMap<String, Type>();
+	List<String> varsList           = new ArrayList<String>();
+	Integer length                  = 40;  // sketch bound
 
 	public ConstraintFactory(Function inputFunction, int specification, String[] examples, FcnHeader functionHeader,
 			List<Parameter> args, Integer mode, Integer distanceBound, Integer length, String distanceOperator) {
-		this.inputFunction     = inputFunction; // incorrect input function
-		this.examples      = examples;    // test-cases
+		this.inputFunction       = inputFunction;   // incorrect input function
+		this.examples            = examples;        // test-cases
 		this.inputFunctionHeader = functionHeader;  // incorrect input function header
-		this.inputArgs       = args;      // arguments
-		this.specification     = specification; // specification type e.g I/O examples, assertions
-		this.minimizationMode  = mode;      // minimization mode
-		this.distanceMode    = 0;         // Hamming Distance
+		this.inputArgs           = args;            // arguments
+		this.specification       = specification;   // specification type e.g I/O examples, assertions
+		this.minimizationMode    = mode;            // minimization mode
+		this.distanceMode        = 0;               // Hamming Distance
 		this.distanceOperator    = distanceOperator;
 		if (specification == 0)
 			parseExamples(examples);
 		else if (specification == 1) {
 			if (distanceBound == null)
-				this.semanticDistanceBound = 5;
+				this.semanticDistanceBound = 1;
 			else
 				this.semanticDistanceBound = distanceBound;
 			if (length != null)
@@ -132,11 +132,11 @@ public class ConstraintFactory {
 	}
 
 	private String getSketchScriptForAssertions(Statement s) {
-		Statement source      = ((StmtBlock) s).clone();
-		StmtBlock originalSource  = ((StmtBlock) source).clone();
-		Statement coeffFunDecls   = null;
-		Statement constFunDecls   = null;
-		String reservedFunctions  = ReservedFuncs();
+		Statement source            = ((StmtBlock) s).clone();
+		StmtBlock originalSource    = ((StmtBlock) source).clone();
+		Statement coeffFunDecls     = null;
+		Statement constFunDecls     = null;
+		String reservedFunctions    = ReservedFuncs();
 
 		System.out.println("*************************SOURCE**********************************");
 		System.out.println(source);
@@ -152,43 +152,43 @@ public class ConstraintFactory {
 
 
 		/*System.out.println("*************************ORIGINAL SOURCE**********************************");
-    System.out.println(originalSource);
-    System.out.println("*************************SOURCE CONTEXT**********************************");
-    System.out.println(source.toString_Context());*/
+        System.out.println(originalSource);
+        System.out.println("*************************SOURCE CONTEXT**********************************");
+        System.out.println(source.toString_Context());*/
 
 		coeffFunDecls = replaceLinearCombination(source);
 		/*System.out.println("*************************COEFFICIENT FUNCTION DECLARATIONS**********************************");
-    System.out.println(coeffFunDecls);
+        System.out.println(coeffFunDecls);
 
 
-    System.out.println("*************************ORIGINAL SOURCE**********************************");
-    System.out.println(originalSource);*/
+        System.out.println("*************************ORIGINAL SOURCE**********************************");
+        System.out.println(originalSource);*/
 
 		Statement globalVarDecls = getGlobalDecls();
 		/*System.out.println("*************************GLOBAL VARIABLE DECLARATIONS**********************************");
-    System.out.println(globalVarDecls);*/
+        System.out.println(globalVarDecls);*/
 
 		constFunDecls = replaceConst(source);
 
 		// add record statements to source code and collect variables info
-		Map<String, Type> vars        = ConstraintFactory.addRecordStmt((StmtBlock) source);
+		Map<String, Type> vars          = ConstraintFactory.addRecordStmt((StmtBlock) source);
 
 		for (int i = 0; i < inputArgs.size(); i++) {
 			vars.put(inputArgs.get(i).getName(), inputArgs.get(i).getType());
 		}
 
-		namesToType       = vars;
+		namesToType             = vars;
 		List<String> varsNames  = new ArrayList<String>(vars.keySet());
-		varsList        = varsNames;
-		List<Type> varsTypes  = new ArrayList<Type>();
+		varsList                = varsNames;
+		List<Type> varsTypes    = new ArrayList<Type>();
 		for (int i = 0; i < varsNames.size(); i++) {
 			varsTypes.add(vars.get(varsNames.get(i)));
 			//System.out.println(varsNames.get(i));
 		}
 
 		/*for (int i : constMapLine.keySet()) {
-      System.out.println("The line number is: " + i + " and the value is: " + constMapLine.get(i));
-    }*/
+            System.out.println("The line number is: " + i + " and the value is: " + constMapLine.get(i));
+        }*/
 		List<Statement> stmts = new ArrayList<>();
 		stmts.add(globalVarDecls);
 		// add declare of constant functions
@@ -206,13 +206,13 @@ public class ConstraintFactory {
 
 		Statement block = new StmtBlock(stmts);
 		/*System.out.println("*************************BLOCK**********************************");
-    System.out.println(block);*/
+        System.out.println(block);*/
 
 		source = new StmtBlock(new StmtVarDecl(new TypePrimitive(4), "linehit", new ExprConstInt(0), 0), source);
 
 		Function f = new Function(ConstraintFactory.inputFunctionHeader, source);
 		/*System.out.println("*************************FUNCTION**********************************");
-    System.out.println(f);*/
+        System.out.println(f);*/
 
 		Function fOriginal = new Function(new FcnHeader(inputFunction.getName()+"Original", inputFunction.getReturnType(), 
 				inputFunction.getParams()), originalSource);
@@ -237,25 +237,16 @@ public class ConstraintFactory {
 	private Function constraintFunctionAssertions() {
 		List<Statement> stmts = new ArrayList<Statement>();
 		List<Expression> assertInputs = new ArrayList<Expression>();
-		List<Parameter> params      = new ArrayList<Parameter>();
+		List<Parameter> params        = new ArrayList<Parameter>();
 		for (int i = 0; i < inputArgs.size(); i++) {
 			Expression e = new ExprVar("input"+i);
 			assertInputs.add(e);
 			Parameter p  = new Parameter(new TypePrimitive(4), ("input"+i), 0, false);
 			params.add(p);
 		}
-		Statement cons   = new StmtAssert(new ExprBinary(new ExprFunCall(inputFunction.getName(), assertInputs),
-				"==", new ExprVar("input0"), 0));
-		Statement cons2  = new StmtAssert(new ExprBinary(new ExprFunCall(inputFunction.getName(), assertInputs),
-				"==", new ExprVar("input1"), 0));
-		Statement cons3  = new StmtAssert(new ExprBinary(new ExprFunCall(inputFunction.getName(), assertInputs),
-				"==", new ExprVar("input2"), 0));
-		Expression cond1 = new ExprBinary(new ExprBinary(new ExprVar("input0"), ">=", new ExprVar("input1"), 0), "&&",
-				new ExprBinary(new ExprVar("input0"), ">=", new ExprVar("input2"), 0), 0);
-		Expression cond2 = new ExprBinary(new ExprBinary(new ExprVar("input1"), ">=", new ExprVar("input0"), 0), "&&",
-				new ExprBinary(new ExprVar("input1"), ">=", new ExprVar("input2"), 0), 0);
-		stmts.add(new StmtIfThen(cond1, cons, new StmtIfThen(cond2, cons2, cons3)));
-
+		stmts.add(new StmtAssert(
+				new ExprBinary(new ExprFunCall(inputFunction.getName(), assertInputs),
+						"==", new ExprBinary(new ExprVar("input0"), "*", new ExprVar("input1"), 0), 0)));
 		return new Function("Constraint", new TypeVoid(), params, new StmtBlock(stmts),
 				FcnType.Harness);
 	}
@@ -267,7 +258,7 @@ public class ConstraintFactory {
 
 		// semantic distance
 		if (distanceMode == 0)
-			stmts.add(hammingDistanceAssertions());   
+			stmts.add(hammingDistanceAssertions());     
 
 		// syntactic distance
 		StmtBlock syntacticDistance = new StmtBlock();
@@ -299,38 +290,15 @@ public class ConstraintFactory {
 		cons.addStmt(new StmtVarDecl(new TypePrimitive(4), "out", new ExprConstInt(0), 0));
 		cons.addStmt(new StmtVarDecl(new TypePrimitive(4), "outOriginal", new ExprConstInt(0), 0));
 
-		//cons.addStmt(new StmtAssign(new ExprVar("out"), new ExprFunCall(inputFunctionHeader.getName(), in, inputFunctionHeader.getName()), 0));
-		//cons.addStmt(new StmtAssign(new ExprVar("outOriginal"), new ExprFunCall(inputFunctionHeader.getName()+"Original",
-		//    in, inputFunctionHeader.getName()), 0));
-		Statement cons1   = new StmtAssert(new ExprBinary(new ExprFunCall(inputFunction.getName(), in),
-				"==", new ExprFunCall("Const"+(numberOfConstants-3)), 0));
-		Statement cons2  = new StmtAssert(new ExprBinary(new ExprFunCall(inputFunction.getName(), in),
-				"==", new ExprFunCall("Const"+(numberOfConstants-2)), 0));
-		Statement cons3  = new StmtAssert(new ExprBinary(new ExprFunCall(inputFunction.getName(), in),
-				"==", new ExprFunCall("Const"+(numberOfConstants-1)), 0));
-		Expression cond1 = new ExprBinary(new ExprBinary(new ExprFunCall("Const"+(numberOfConstants-3)), ">=", new ExprFunCall("Const"+(numberOfConstants-2)), 0), "&&",
-				new ExprBinary(new ExprFunCall("Const"+(numberOfConstants-3)), ">=", new ExprFunCall("Const"+(numberOfConstants-1)), 0), 0);
-		Expression cond2 = new ExprBinary(new ExprBinary(new ExprFunCall("Const"+(numberOfConstants-2)), ">=", new ExprFunCall("Const"+(numberOfConstants-3)), 0), "&&",
-				new ExprBinary(new ExprFunCall("Const"+(numberOfConstants-2)), ">=", new ExprFunCall("Const"+(numberOfConstants-1)), 0), 0);
-		cons.addStmt(new StmtIfThen(cond1, cons1, new StmtIfThen(cond2, cons2, cons3)));
-
-		Statement cons11   = new StmtAssert(new ExprBinary(new ExprFunCall(inputFunction.getName()+"Original", in),
-				"==", new ExprFunCall("Const"+(numberOfConstants-3)), 0));
-		Statement cons22  = new StmtAssert(new ExprBinary(new ExprFunCall(inputFunction.getName()+"Original", in),
-				"==", new ExprFunCall("Const"+(numberOfConstants-2)), 0));
-		Statement cons33  = new StmtAssert(new ExprBinary(new ExprFunCall(inputFunction.getName()+"Original", in),
-				"==", new ExprFunCall("Const"+(numberOfConstants-1)), 0));
-		Expression cond11 = new ExprBinary(new ExprBinary(new ExprFunCall("Const"+(numberOfConstants-3)), ">=", new ExprFunCall("Const"+(numberOfConstants-2)), 0), "&&",
-				new ExprBinary(new ExprFunCall("Const"+(numberOfConstants-3)), ">=", new ExprFunCall("Const"+(numberOfConstants-1)), 0), 0);
-		Expression cond22 = new ExprBinary(new ExprBinary(new ExprFunCall("Const"+(numberOfConstants-2)), ">=", new ExprFunCall("Const"+(numberOfConstants-3)), 0), "&&",
-				new ExprBinary(new ExprFunCall("Const"+(numberOfConstants-2)), ">=", new ExprFunCall("Const"+(numberOfConstants-1)), 0), 0);
-		cons.addStmt(new StmtIfThen(cond11, cons11, new StmtIfThen(cond22, cons22, cons33)));
-		/*cons.addStmt(new StmtAssert(
-        new ExprBinary(new ExprVar("out"),
-            "==", new ExprBinary(new ExprFunCall("Const"+(numberOfConstants-2)), "+", new ExprFunCall("Const"+(numberOfConstants-1)), 0), 0)));
-    cons.addStmt(new StmtAssert(
-        new ExprBinary(new ExprVar("outOriginal"),
-            "==", new ExprBinary(new ExprFunCall("Const"+(numberOfConstants-2)), "+", new ExprFunCall("Const"+(numberOfConstants-1)), 0), 0)));*/
+		cons.addStmt(new StmtAssign(new ExprVar("out"), new ExprFunCall(inputFunctionHeader.getName(), in, inputFunctionHeader.getName()), 0));
+		cons.addStmt(new StmtAssign(new ExprVar("outOriginal"), new ExprFunCall(inputFunctionHeader.getName()+"Original",
+				in, inputFunctionHeader.getName()), 0));
+		cons.addStmt(new StmtAssert(
+				new ExprBinary(new ExprVar("out"),
+						"==", new ExprBinary(new ExprFunCall("Const"+(numberOfConstants-2)), "*", new ExprFunCall("Const"+(numberOfConstants-1)), 0), 0)));
+		cons.addStmt(new StmtAssert(
+				new ExprBinary(new ExprVar("outOriginal"),
+						"==", new ExprBinary(new ExprFunCall("Const"+(numberOfConstants-2)), "*", new ExprFunCall("Const"+(numberOfConstants-1)), 0), 0)));
 		numberOfConstants -= inputArgs.size();
 
 		List<Statement> forBody = new ArrayList<Statement>();
@@ -357,9 +325,9 @@ public class ConstraintFactory {
 	}
 
 	private String getSketchScriptForExamples(Statement source) {
-		StmtBlock originalSource  = ((StmtBlock) source).clone();
-		Statement coeffFunDecls   = null;
-		String reservedFunctions  = ReservedFuncs();
+		StmtBlock originalSource    = ((StmtBlock) source).clone();
+		Statement coeffFunDecls     = null;
+		String reservedFunctions    = ReservedFuncs();
 
 		System.out.println("*************************SOURCE**********************************");
 		System.out.println(source);
@@ -393,16 +361,16 @@ public class ConstraintFactory {
 		System.out.println(globalVarDecls);
 
 		// add record statements to source code and collect variables info
-		Map<String, Type> vars        = ConstraintFactory.addRecordStmt((StmtBlock) source);
+		Map<String, Type> vars          = ConstraintFactory.addRecordStmt((StmtBlock) source);
 
 		for (int i = 0; i < inputArgs.size(); i++) {
 			vars.put(inputArgs.get(i).getName(), inputArgs.get(i).getType());
 		}
 
-		namesToType       = vars;
+		namesToType             = vars;
 		List<String> varsNames  = new ArrayList<String>(vars.keySet());
-		varsList        = varsNames;
-		List<Type> varsTypes  = new ArrayList<Type>();
+		varsList                = varsNames;
+		List<Type> varsTypes    = new ArrayList<Type>();
 		for (int i = 0; i < varsNames.size(); i++) {
 			varsTypes.add(vars.get(varsNames.get(i)));
 			//System.out.println(varsNames.get(i));
@@ -452,7 +420,7 @@ public class ConstraintFactory {
 
 		// semantic distance
 		if (distanceMode == 0)
-			stmts.add(hammingDistance());   
+			stmts.add(hammingDistance());       
 
 		// syntactic distance
 		StmtBlock syntacticDistance = new StmtBlock();
@@ -514,15 +482,15 @@ public class ConstraintFactory {
 	}
 
 	private Statement replaceLinearCombination(Statement source) {
-		List<Statement> list        = new ArrayList<Statement>();
+		List<Statement> list            = new ArrayList<Statement>();
 		Stack<SketchObject> stmtStack   = new Stack<SketchObject>();
-		List<Integer> coeffIndices    = new ArrayList<Integer>();
+		List<Integer> coeffIndices      = new ArrayList<Integer>();
 		int index = 0;
 		stmtStack.push(source);
 		while (!stmtStack.empty()) {
 			SketchObject target = stmtStack.pop();
-			ConstData data    = null;
-			data        = target.replaceLinearCombination(index);
+			ConstData data      = null;
+			data                = target.replaceLinearCombination(index);
 
 			if (data.getType() != null) {
 				while (index <= data.getPrimaryCoeffIndex()) {
@@ -594,7 +562,7 @@ public class ConstraintFactory {
 		source.ConstructLineToString(lineToString);
 
 		/*System.out.println("*************************LINE TO STRING**********************************");
-    System.out.println(lineToString);*/
+        System.out.println(lineToString);*/
 		return new StmtBlock(list);
 
 	}
@@ -605,14 +573,14 @@ public class ConstraintFactory {
 
 
 	private static Function addCoeffFun(int index, int value, Type type) {
-		Expression condition  = new ExprBinary(new ExprVar("coeff" + index + "change"), "==", new ExprConstInt(0), 0);
-		StmtReturn return1    = new StmtReturn(new ExprConstInt(value), 0);
+		Expression condition    = new ExprBinary(new ExprVar("coeff" + index + "change"), "==", new ExprConstInt(0), 0);
+		StmtReturn return1      = new StmtReturn(new ExprConstInt(value), 0);
 		Expression condition2   = new ExprStar();
-		StmtReturn return2    = new StmtReturn(new ExprConstInt(1 - value), 0);
-		Statement ifst      = new StmtIfThen(condition, return1, null, 0);
-		Statement ifst2     = new StmtIfThen(condition2, return2, null, 0);
-		StmtReturn return3    = new StmtReturn(new ExprConstInt(-1), 0);
-		StmtBlock sb      = new StmtBlock();
+		StmtReturn return2      = new StmtReturn(new ExprConstInt(1 - value), 0);
+		Statement ifst          = new StmtIfThen(condition, return1, null, 0);
+		Statement ifst2         = new StmtIfThen(condition2, return2, null, 0);
+		StmtReturn return3      = new StmtReturn(new ExprConstInt(-1), 0);
+		StmtBlock sb            = new StmtBlock();
 		sb.addStmt(ifst);
 		sb.addStmt(ifst2);
 		sb.addStmt(return3);
@@ -625,8 +593,8 @@ public class ConstraintFactory {
 		StmtReturn return2    = new StmtReturn(new ExprConstInt(0), 0);
 		StmtReturn return3    = new StmtReturn(new ExprVar("coeff" + index + "change"), 0);
 
-		Statement ifst2     = new StmtIfThen(condition2, return2, null, 0);
-		StmtBlock sb      = new StmtBlock();
+		Statement ifst2       = new StmtIfThen(condition2, return2, null, 0);
+		StmtBlock sb          = new StmtBlock();
 		sb.addStmt(ifst2);
 		sb.addStmt(return3);
 		return new Function("Coeff" + index, type, new ArrayList<Parameter>(), sb, FcnType.Static);
@@ -634,7 +602,7 @@ public class ConstraintFactory {
 
 	private static Function addInputCoeffFun(int index, Type type) {
 		StmtReturn returnStmt = new StmtReturn(new ExprVar("coeff" + index + "change"), 0);
-		StmtBlock sb        = new StmtBlock();
+		StmtBlock sb          = new StmtBlock();
 		sb.addStmt(returnStmt);
 		return new Function("Coeff" + index, type, new ArrayList<Parameter>(), sb, FcnType.Static);
 
@@ -713,7 +681,7 @@ public class ConstraintFactory {
 
 	static public Statement recordState(int lineNumber, Map<String, Type> allVars) {
 		List<String> vars   = new ArrayList<String>(allVars.keySet());
-		StmtBlock result  = new StmtBlock();
+		StmtBlock result    = new StmtBlock();
 
 		result.addStmt(new StmtExpr(new ExprUnary(5, new ExprVar("count"), 0), 0));
 		result.addStmt(
@@ -733,7 +701,7 @@ public class ConstraintFactory {
 
 	static public Statement recordStateOriginal(int lineNumber, Map<String, Type> allVars) {
 		List<String> vars   = new ArrayList<String>(allVars.keySet());
-		StmtBlock result  = new StmtBlock();
+		StmtBlock result    = new StmtBlock();
 		result.addStmt(new StmtExpr(new ExprUnary(5, new ExprVar("originalCount"), 0), 0));
 		result.addStmt(
 				new StmtAssign(
@@ -762,7 +730,7 @@ public class ConstraintFactory {
 
 	private StmtBlock varArrayDecls(List<String> names, List<Type> types, boolean original) {
 		List<Statement> stmts = new ArrayList<Statement>();
-		String arrayName    = original ? "OriginalArray" : "Array";
+		String arrayName      = original ? "OriginalArray" : "Array";
 		for (int i = 0; i < names.size(); i++) {
 			if (types.get(i) instanceof TypeArray)
 				continue;

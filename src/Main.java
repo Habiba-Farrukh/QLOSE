@@ -296,9 +296,9 @@ public class Main {
 	}
 
 	public static void main(String[] args) throws FileNotFoundException, InterruptedException {
-	    String incorrectProgram = new Scanner(new File("benchmarks/max3/max3.java")).useDelimiter("\\Z").next();
+	    String incorrectProgram = new Scanner(new File("benchmarks/double/double.java")).useDelimiter("\\Z").next();
 	    String[] examples   	= {"x=1, y=2, z=3, 3", "x=3, y=2, z=1, 3", "x=5, y=8, z=1, 8"};
-		Main m					= new Main(incorrectProgram, examples, "max3", 1);
+		Main m					= new Main(incorrectProgram, examples, "doubleUp", 1);
 		m.begin();
 	}
 }

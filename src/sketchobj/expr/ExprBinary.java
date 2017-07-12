@@ -65,7 +65,7 @@ public class ExprBinary extends Expression {
 
 	@Override
 	public ExprBinary clone() {
-		return new ExprBinary(this.op, this.left, this.right, this.lineNumber);
+		return new ExprBinary(this.op, this.left.clone(), this.right.clone(), this.lineNumber);
 	}
 
 	/**
@@ -348,8 +348,8 @@ public class ExprBinary extends Expression {
 			return 11;
 		case ExprBinary.BINOP_BAND:
 			return 12;
-		// This is the bastard of the bunch -- we'll put it higher than the
-		// other bitdiddling operators
+			// This is the bastard of the bunch -- we'll put it higher than the
+			// other bitdiddling operators
 		case ExprBinary.BINOP_SELECT:
 			return 15;
 
@@ -476,12 +476,18 @@ public class ExprBinary extends Expression {
 				return new ConstData(null, toAdd, index, 0, null, 0);
 			}
 		}
-		if (this.op == 1 || this.op == 2) {
+		if (this.op == 1 || this.op == 2 || this.op == 3 || this.op == 4) {
 			Integer primaryIndex = -1;
 			List<SketchObject> toAdd = new ArrayList<SketchObject>();
 			left.checkAtom();
 			right.checkAtom();
+			System.out.println("Right: " + right);
+			System.out.println("Left: " + left);
+			Type t = this.getT();
+			List<Integer> liveVarsIndexSet = new ArrayList<Integer>();
+			List<String> liveVarsNameSet = new ArrayList<String>();
 			if (right.isAtom()) {
+				System.out.println("IS ATOM");
 				this.right = new ExprBinary(new ExprFunCall("Coeff" + index, new ArrayList<Expression>()), "*",
 						this.right, this.lineNumber);
 				primaryIndex = index;
@@ -492,6 +498,7 @@ public class ExprBinary extends Expression {
 				toAdd.add(right);
 			}
 			if (left.isAtom()) {
+				System.out.println("LEFT IS ATOM");
 				this.left = new ExprBinary(new ExprFunCall("Coeff" + index, new ArrayList<Expression>()), "*",
 						this.left, this.lineNumber);
 				primaryIndex = index;
@@ -501,26 +508,66 @@ public class ExprBinary extends Expression {
 				left.setT(this.getT());
 				toAdd.add(left);
 			}
-			Type t = this.getT();
-			List<Integer> liveVarsIndexSet = new ArrayList<Integer>();
-			List<String> liveVarsNameSet = new ArrayList<String>();
+
+			List<String> vars = new ArrayList<String>(this.getCtx().getAllVars().keySet());
+			if (this.op == 3 || this.op == 4) {
+				System.out.println("RIGHT : " + right);
+				System.out.println("LEFT : " + left);
+				Expression newTerm = new ExprBinary(new ExprFunCall("Coeff" + index, new ArrayList<Expression>()),
+						"*", new ExprVar(vars.get(0), t), this.lineNumber);
+				liveVarsIndexSet.add(index);
+				index++;
+				liveVarsNameSet.add(vars.get(0));
+				for (int i = 1; i < vars.size(); i++) {
+					if (((TypePrimitive) this.getCtx().getAllVars().get(vars.get(i))).getType() != ((TypePrimitive) t).getType())
+						continue;
+					Expression newTermR = new ExprBinary(new ExprFunCall("Coeff" + index, new ArrayList<Expression>()),
+							"*", new ExprVar(vars.get(i), t), this.lineNumber);
+					newTerm = new ExprBinary(newTerm, "+", newTermR, this.lineNumber);
+					liveVarsIndexSet.add(index);
+					index++;
+					liveVarsNameSet.add(vars.get(i));
+				}
+				this.right = new ExprBinary(right, this.getOpString(), newTerm, this.lineNumber);
+			}
+
 			if (t instanceof TypeArray) {
 				return new ConstData(null, new ArrayList<SketchObject>(), index, 0, null, 0);
 			}
 			if (this.isLCadded()) {
+				System.out.println("IS LC ADDED");
 				left.setLCadded(true);
 				right.setLCadded(true);
 			} else {
-				List<String> vars = new ArrayList<String>(this.getCtx().getAllVars().keySet());
-				for (String v : vars) {
-					if (((TypePrimitive) this.getCtx().getAllVars().get(v)).getType() != ((TypePrimitive) t).getType())
-						continue;
+				vars = new ArrayList<String>(this.getCtx().getAllVars().keySet());
+				if (this.op == 3 || this.op == 4) {
+					System.out.println("RIGHT : " + right);
+					System.out.println("LEFT : " + left);
 					Expression newTerm = new ExprBinary(new ExprFunCall("Coeff" + index, new ArrayList<Expression>()),
-							"*", new ExprVar(v, t), this.lineNumber);
-					this.right = new ExprBinary(right, "+", newTerm, this.lineNumber);
-					liveVarsIndexSet.add(index);
-					index++;
-					liveVarsNameSet.add(v);
+							"*", new ExprVar(vars.get(0), t), this.lineNumber);;
+							for (int i = 1; i < vars.size(); i++) {
+								if (((TypePrimitive) this.getCtx().getAllVars().get(vars.get(i))).getType() != ((TypePrimitive) t).getType())
+									continue;
+								Expression newTermR = new ExprBinary(new ExprFunCall("Coeff" + index, new ArrayList<Expression>()),
+										"*", new ExprVar(vars.get(i), t), this.lineNumber);
+								newTerm = new ExprBinary(newTerm, "+", newTermR, this.lineNumber);
+								liveVarsIndexSet.add(index);
+								index++;
+								liveVarsNameSet.add(vars.get(i));
+							}
+							this.right = new ExprBinary(right, this.getOpString(), newTerm, this.lineNumber);
+				}
+				else {
+					for (String v : vars) {
+						if (((TypePrimitive) this.getCtx().getAllVars().get(v)).getType() != ((TypePrimitive) t).getType())
+							continue;
+						Expression newTerm = new ExprBinary(new ExprFunCall("Coeff" + index, new ArrayList<Expression>()),
+								"*", new ExprVar(v, t), this.lineNumber);
+						this.right = new ExprBinary(right, "+", newTerm, this.lineNumber);
+						liveVarsIndexSet.add(index);
+						index++;
+						liveVarsNameSet.add(v);
+					}
 				}
 				this.right = new ExprBinary(this.right, "+",new ExprBinary(new ExprFunCall("Coeff" + index), "*",
 						new ExprFunCall("Coeff" + (index + 1), new ArrayList<Expression>()), this.lineNumber), this.lineNumber);
@@ -531,4 +578,5 @@ public class ExprBinary extends Expression {
 		}
 		return new ConstData(null, new ArrayList<SketchObject>(), index, 0, null, 0);
 	}
+
 }

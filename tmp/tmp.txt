@@ -1,64 +1,61 @@
 bit line5change = 0;
-bit line6change = 0;
-bit line8change = 0;
-bit line9change = 0;
 
 bit coeff0change = ??;
  int Coeff0(){
 if(coeff0change == 0){
-return 1;
+return 0;
 }
 
 if(??){
-return 0;
+return 1;
 }
 
 return -1;
 }
 
-int coeff1change = ??;
+bit coeff1change = ??;
  int Coeff1(){
-if(??){
+if(coeff1change == 0){
 return 0;
 }
 
-return coeff1change;
+if(??){
+return 1;
+}
+
+return -1;
 }
 
 bit coeff2change = ??;
  int Coeff2(){
 if(coeff2change == 0){
-return 1;
+return 0;
 }
 
 if(??){
-return 0;
+return 1;
 }
 
 return -1;
 }
 
-bit coeff3change = ??;
+int coeff3change = ??;
  int Coeff3(){
-if(coeff3change == 0){
+if(??){
 return 0;
 }
 
-if(??){
-return 1;
-}
-
-return -1;
+return coeff3change;
 }
 
 bit coeff4change = ??;
  int Coeff4(){
 if(coeff4change == 0){
-return 0;
+return 1;
 }
 
 if(??){
-return 1;
+return 0;
 }
 
 return -1;
@@ -90,339 +87,118 @@ return 1;
 return -1;
 }
 
-int coeff7change = ??;
- int Coeff7(){
-if(??){
-return 0;
-}
 
-return coeff7change;
-}
-
-bit coeff8change = ??;
- int Coeff8(){
-if(coeff8change == 0){
-return 0;
-}
-
-if(??){
+bit const0change = ??;
+ int Const0(){
+if(const0change == 1){
+return ??;
+}else{
 return 1;
-}
-
-return -1;
-}
-
-int coeff9change = ??;
- int Coeff9(){
-if(??){
-return 0;
-}
-
-return coeff9change;
-}
-
-bit coeff10change = ??;
- int Coeff10(){
-if(coeff10change == 0){
-return 1;
-}
-
-if(??){
-return 0;
-}
-
-return -1;
-}
-
-bit coeff11change = ??;
- int Coeff11(){
-if(coeff11change == 0){
-return 0;
-}
-
-if(??){
-return 1;
-}
-
-return -1;
-}
-
-bit coeff12change = ??;
- int Coeff12(){
-if(coeff12change == 0){
-return 0;
-}
-
-if(??){
-return 1;
-}
-
-return -1;
-}
-
-bit coeff13change = ??;
- int Coeff13(){
-if(coeff13change == 0){
-return 0;
-}
-
-if(??){
-return 1;
-}
-
-return -1;
-}
-
-bit coeff14change = ??;
- int Coeff14(){
-if(coeff14change == 0){
-return 0;
-}
-
-if(??){
-return 1;
-}
-
-return -1;
-}
-
-int coeff15change = ??;
- int Coeff15(){
-if(??){
-return 0;
-}
-
-return coeff15change;
-}
+}}
 
 
+int[40] lineArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int[40] xArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int[40] resultArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int[40] yArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
-int[100] lineArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-int[100] xArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-int[100] yArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-int[100] zArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
-
-int[100] lineOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-int[100] xOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-int[100] yOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-int[100] zOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int[40] lineOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int[40] xOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int[40] resultOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int[40] yOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 
 int count = -1;
 int originalCount = -1;
 
- int max3Original(int x, int y, int z){
+ int doubleUpOriginal(int x, int y){
 (originalCount)++;
 lineOriginalArray[originalCount] = 5;
 xOriginalArray[originalCount] = x;
 yOriginalArray[originalCount] = y;
-zOriginalArray[originalCount] = z;
 
-if(x > y){
-(originalCount)++;
-lineOriginalArray[originalCount] = 6;
-xOriginalArray[originalCount] = x;
-yOriginalArray[originalCount] = y;
-zOriginalArray[originalCount] = z;
-
-y = x;
-
+int result = x * 1;
 
 (originalCount)++;
-lineOriginalArray[originalCount] = 6;
+lineOriginalArray[originalCount] = 7;
 xOriginalArray[originalCount] = x;
+resultOriginalArray[originalCount] = result;
 yOriginalArray[originalCount] = y;
-zOriginalArray[originalCount] = z;
 
+return result;
 
 }
 
-
-(originalCount)++;
-lineOriginalArray[originalCount] = 8;
-xOriginalArray[originalCount] = x;
-yOriginalArray[originalCount] = y;
-zOriginalArray[originalCount] = z;
-
-if(y > z){
-(originalCount)++;
-lineOriginalArray[originalCount] = 9;
-xOriginalArray[originalCount] = x;
-yOriginalArray[originalCount] = y;
-zOriginalArray[originalCount] = z;
-
-z = x;
-
-
-(originalCount)++;
-lineOriginalArray[originalCount] = 9;
-xOriginalArray[originalCount] = x;
-yOriginalArray[originalCount] = y;
-zOriginalArray[originalCount] = z;
-
-
-}
-
-
-(originalCount)++;
-lineOriginalArray[originalCount] = 11;
-xOriginalArray[originalCount] = x;
-yOriginalArray[originalCount] = y;
-zOriginalArray[originalCount] = z;
-
-return z;
-
-}
-
- int max3(int x, int y, int z){
+ int doubleUp(int x, int y){
 int linehit = 0;
 (count)++;
 lineArray[count] = 5;
 xArray[count] = x;
 yArray[count] = y;
-zArray[count] = z;
 
-if(((x - y) + ((Coeff0()) * (Coeff1()))) > 0){
-(count)++;
-lineArray[count] = 6;
-xArray[count] = x;
-yArray[count] = y;
-zArray[count] = z;
-
-y = (((((Coeff2()) * x) + ((Coeff3()) * x)) + ((Coeff4()) * y)) + ((Coeff5()) * z)) + ((Coeff6()) * (Coeff7()));
-
+int result = (((((Coeff4()) * x) * ((Const0()) * (((Coeff5()) * x) + ((Coeff6()) * y)))) + ((Coeff0()) * x)) + ((Coeff1()) * y)) + ((Coeff2()) * (Coeff3()));
 
 (count)++;
-lineArray[count] = 6;
+lineArray[count] = 7;
 xArray[count] = x;
+resultArray[count] = result;
 yArray[count] = y;
-zArray[count] = z;
+
+return result;
 
 
 }
 
-
-(count)++;
-lineArray[count] = 8;
-xArray[count] = x;
-yArray[count] = y;
-zArray[count] = z;
-
-if(((y - z) + ((Coeff8()) * (Coeff9()))) > 0){
-(count)++;
-lineArray[count] = 9;
-xArray[count] = x;
-yArray[count] = y;
-zArray[count] = z;
-
-z = (((((Coeff10()) * x) + ((Coeff11()) * x)) + ((Coeff12()) * y)) + ((Coeff13()) * z)) + ((Coeff14()) * (Coeff15()));
-
-
-(count)++;
-lineArray[count] = 9;
-xArray[count] = x;
-yArray[count] = y;
-zArray[count] = z;
-
-
-}
-
-
-(count)++;
-lineArray[count] = 11;
-xArray[count] = x;
-yArray[count] = y;
-zArray[count] = z;
-
-return z;
-
-
-}
-
-bit const16change = ??;
- int Const16(){
-if(const16change == 1){
+bit const7change = ??;
+ int Const7(){
+if(const7change == 1){
 return ??;
 }else{
 return 1;
 }}
 
-bit const17change = ??;
- int Const17(){
-if(const17change == 1){
+bit const8change = ??;
+ int Const8(){
+if(const8change == 1){
 return ??;
 }else{
 return 1;
 }}
 
-bit const18change = ??;
- int Const18(){
-if(const18change == 1){
-return ??;
-}else{
-return 1;
-}}
-
-
-harness void Constraint(int input0, int input1, int input2){
-if((input0 >= input1) && (input0 >= input2)){
-assert ((max3(input0, input1, input2)) == input0);
-}else{
-if((input1 >= input0) && (input1 >= input2)){
-assert ((max3(input0, input1, input2)) == input1);
-}else{
-assert ((max3(input0, input1, input2)) == input2);
-}
-}
-}
 
 harness void Distance(){
 int SyntacticDistance = 0;
 int SemanticDistance = 0;
-xArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-xOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-yArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-yOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-zArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-zOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-lineOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-lineArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-xArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-xOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-yArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-yOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-zArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-zOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-lineOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-lineArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+xArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+xOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+resultArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+resultOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+yArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+yOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+lineOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+lineArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+xArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+xOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+resultArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+resultOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+yArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+yOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+lineOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+lineArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 count = -1;
 originalCount = -1;
 int out = 0;
 int outOriginal = 0;
-if(((Const16()) >= (Const17())) && ((Const16()) >= (Const18()))){
-assert ((max3(Const16(), Const17(), Const18())) == (Const16()));
-}else{
-if(((Const17()) >= (Const16())) && ((Const17()) >= (Const18()))){
-assert ((max3(Const16(), Const17(), Const18())) == (Const17()));
-}else{
-assert ((max3(Const16(), Const17(), Const18())) == (Const18()));
-}
-}
-if(((Const16()) >= (Const17())) && ((Const16()) >= (Const18()))){
-assert ((max3Original(Const16(), Const17(), Const18())) == (Const16()));
-}else{
-if(((Const17()) >= (Const16())) && ((Const17()) >= (Const18()))){
-assert ((max3Original(Const16(), Const17(), Const18())) == (Const17()));
-}else{
-assert ((max3Original(Const16(), Const17(), Const18())) == (Const18()));
-}
-}
-for(int i = 0; i < 100; (i)++){
+out = doubleUp(Const7(), Const8());
+outOriginal = doubleUpOriginal(Const7(), Const8());
+assert (out == ((Const7()) * (Const8())));
+assert (outOriginal == ((Const7()) * (Const8())));
+for(int i = 0; i < 40; (i)++){
 SemanticDistance += (xArray[i]) != (xOriginalArray[i]);
+SemanticDistance += (resultArray[i]) != (resultOriginalArray[i]);
 SemanticDistance += (yArray[i]) != (yOriginalArray[i]);
-SemanticDistance += (zArray[i]) != (zOriginalArray[i]);
 }
 
 
@@ -433,16 +209,11 @@ SyntacticDistance += coeff3change;
 SyntacticDistance += coeff4change;
 SyntacticDistance += coeff5change;
 SyntacticDistance += coeff6change;
-SyntacticDistance += coeff7change;
-SyntacticDistance += coeff8change;
-SyntacticDistance += coeff9change;
-SyntacticDistance += coeff10change;
-SyntacticDistance += coeff11change;
-SyntacticDistance += coeff12change;
-SyntacticDistance += coeff13change;
-SyntacticDistance += coeff14change;
-SyntacticDistance += coeff15change;
 
-assert (SemanticDistance < 5);
+assert (SemanticDistance < 1);
 minimize(SyntacticDistance+SemanticDistance);
+}
+
+harness void Constraint(int input0, int input1){
+assert ((doubleUp(input0, input1)) == (input0 * input1));
 }
