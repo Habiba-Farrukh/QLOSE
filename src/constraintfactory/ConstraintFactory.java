@@ -28,8 +28,8 @@ public class ConstraintFactory {
 	public String distanceOperator;
 
 	List<List<Expression>> inputs = new ArrayList<List<Expression>>();
-	List<Expression>  outputs    = new ArrayList<Expression>();
-	List<Expression> in          = new ArrayList<Expression>();
+	List<Expression>  outputs     = new ArrayList<Expression>();
+	List<Expression> in           = new ArrayList<Expression>();
 
 	// map from coefficient index to line number in the code
 	public Map<Integer, Integer> coeffIndexToLine = new HashMap<Integer, Integer>();
@@ -45,22 +45,22 @@ public class ConstraintFactory {
 
 
 	int numberOfConstants = 0;  // number of constants in code
-	Integer numLines    = -1; // number of lines in code
+	Integer numLines      = -1; // number of lines in code
 	Integer coeffIndex    = 0;  // number  of coefficients
-	List<Integer> noWeightCoeff     = new ArrayList<Integer>();
+	List<Integer> noWeightCoeff   = new ArrayList<Integer>();
 	Map<String, Type> namesToType = new HashMap<String, Type>();
-	List<String> varsList       = new ArrayList<String>();
-	Integer length          = 100;  // sketch bound
+	List<String> varsList         = new ArrayList<String>();
+	Integer length          	  = 100;  // sketch bound
 
 	public ConstraintFactory(Function inputFunction, int specification, String[] examples, FcnHeader functionHeader,
 			List<Parameter> args, Integer mode, Integer distanceBound, Integer length, String distanceOperator) {
-		this.inputFunction     = inputFunction; // incorrect input function
-		this.examples      = examples;    // test-cases
+		this.inputFunction     	 = inputFunction; // incorrect input function
+		this.examples      		 = examples;    // test-cases
 		this.inputFunctionHeader = functionHeader;  // incorrect input function header
-		this.inputArgs       = args;      // arguments
-		this.specification     = specification; // specification type e.g I/O examples, assertions
-		this.minimizationMode  = mode;      // minimization mode
-		this.distanceMode    = 0;         // Hamming Distance
+		this.inputArgs       	 = args;      // arguments
+		this.specification       = specification; // specification type e.g I/O examples, assertions
+		this.minimizationMode    = mode;      // minimization mode
+		this.distanceMode        = 0;         // Hamming Distance
 		this.distanceOperator    = distanceOperator;
 		if (specification == 0)
 			parseExamples(examples);
@@ -132,7 +132,7 @@ public class ConstraintFactory {
 	}
 
 	private String getSketchScriptForAssertions(Statement s) {
-		Statement source      = ((StmtBlock) s).clone();
+		Statement source      	  = ((StmtBlock) s).clone();
 		StmtBlock originalSource  = ((StmtBlock) source).clone();
 		Statement coeffFunDecls   = null;
 		Statement constFunDecls   = null;
@@ -171,16 +171,16 @@ public class ConstraintFactory {
 		constFunDecls = replaceConst(source);
 
 		// add record statements to source code and collect variables info
-		Map<String, Type> vars        = ConstraintFactory.addRecordStmt((StmtBlock) source);
+		Map<String, Type> vars  = ConstraintFactory.addRecordStmt((StmtBlock) source);
 
 		for (int i = 0; i < inputArgs.size(); i++) {
 			vars.put(inputArgs.get(i).getName(), inputArgs.get(i).getType());
 		}
 
-		namesToType       = vars;
+		namesToType       		= vars;
 		List<String> varsNames  = new ArrayList<String>(vars.keySet());
-		varsList        = varsNames;
-		List<Type> varsTypes  = new ArrayList<Type>();
+		varsList        		= varsNames;
+		List<Type> varsTypes  	= new ArrayList<Type>();
 		for (int i = 0; i < varsNames.size(); i++) {
 			varsTypes.add(vars.get(varsNames.get(i)));
 			//System.out.println(varsNames.get(i));
@@ -514,16 +514,15 @@ public class ConstraintFactory {
 	}
 
 	private Statement replaceLinearCombination(Statement source) {
-		List<Statement> list        = new ArrayList<Statement>();
-		Stack<SketchObject> stmtStack   = new Stack<SketchObject>();
+		List<Statement> list          = new ArrayList<Statement>();
+		Stack<SketchObject> stmtStack = new Stack<SketchObject>();
 		List<Integer> coeffIndices    = new ArrayList<Integer>();
 		int index = 0;
 		stmtStack.push(source);
 		while (!stmtStack.empty()) {
 			SketchObject target = stmtStack.pop();
-			ConstData data    = null;
-			data        = target.replaceLinearCombination(index);
-
+			ConstData data    	= null;
+			data        		= target.replaceLinearCombination(index);
 			if (data.getType() != null) {
 				while (index <= data.getPrimaryCoeffIndex()) {
 					if (!coeffIndices.contains(index)) {

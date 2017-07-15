@@ -119,10 +119,10 @@ public class StmtAssign extends Statement {
 		postctx.setLinenumber(this.getLineNumber());
 		prectx.setLinenumber(this.getLineNumber());
 		List<String> tmp = postctx.getVarsInScope();
-		
+
 		if (!tmp.contains(lhs.toString())&& position > 0)
 			tmp.add(lhs.toString());
-		
+
 		postctx.setVarsInScope(tmp);
 		this.setPostctx(new Context(postctx));
 		this.setPrectx(new Context(prectx));
@@ -132,13 +132,13 @@ public class StmtAssign extends Statement {
 	@Override
 	public Map<String, Type> addRecordStmt(StmtBlock parent, int index, Map<String, Type> m) {
 		parent.stmts = new ArrayList<Statement>(parent.stmts);
-		
+
 		parent.stmts.set(index, new StmtBlock(
 				ConstraintFactory.recordState(this.getPrectx().getLinenumber(), this.getPrectx().getAllVars()), this));
 		m.putAll(this.getPrectx().getAllVars());
 		return m;
 	}
-	
+
 	@Override
 	public void addRecordStmtOriginal(StmtBlock parent, int i) {
 		parent.stmts = new ArrayList<Statement>(parent.stmts);
