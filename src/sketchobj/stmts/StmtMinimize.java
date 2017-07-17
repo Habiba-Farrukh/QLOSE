@@ -69,7 +69,7 @@ public class StmtMinimize extends Statement {
 	}
 
 	@Override
-	public ConstData replaceLinearCombination(int index) {
+	public ConstData replaceLinearCombination(int index, int line) {
 		// TODO Auto-generated method stub
 		return null;
 	}

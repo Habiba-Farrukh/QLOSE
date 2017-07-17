@@ -147,7 +147,7 @@ public class ExprFunCall extends Expression
 	}
 
 	@Override
-	public ConstData replaceLinearCombination(int index) {
+	public ConstData replaceLinearCombination(int index, int line) {
 		return new ConstData(null, new ArrayList<>(), index, 0, null,0);
 	}
 

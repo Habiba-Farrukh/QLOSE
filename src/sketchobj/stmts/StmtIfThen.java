@@ -236,7 +236,7 @@ public class StmtIfThen extends Statement {
 		return externalFuncNames ;
 	}
 	@Override
-	public ConstData replaceLinearCombination(int index) {
+	public ConstData replaceLinearCombination(int index, int line) {
 		List<SketchObject> toAdd = new ArrayList<SketchObject>();
 		cond.setCtx(this.getPostctx());
 		cond.setBoolean(true);

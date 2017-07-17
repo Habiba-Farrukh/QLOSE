@@ -25,6 +25,7 @@ public class CallSketch {
 		Map<Integer, Integer> constOriValue = new HashMap<Integer, Integer>();
 		Set<Integer> validList = new HashSet<Integer>();	 
 		Set<Integer> constValidList = new HashSet<Integer>();
+		Set<Integer> validExprList  = new HashSet<Integer>();
 		List<Integer> unchangedIndex = new ArrayList<Integer>();
 		List<Integer> unchangedConstIndex = new ArrayList<Integer>();
 		
@@ -47,18 +48,25 @@ public class CallSketch {
 			int constIndex 	 = -1;
 			int constReturn  = -1;
 			int constcheck   = -1;
+			int exprIndex 	 = -1;
+			int exprReturn	 = -1;
+			int exprCheck	 = -1;
 			boolean waiting  = false;
 			boolean checking      = false;
 			boolean constWaiting  = false;
 			boolean constChecking = false;
+			boolean exprChecking  = false;
+			boolean exprWaiting	  = false;
 			int coeffTmpReturn = -1;
 			int constTmpReturn = -1;
+			int exprTmpReturn  = -1;
 			boolean coeffFound = false;
 			boolean constFound = false;
+			boolean exprFound  = false;
 			boolean originalConst = false;
 			Map<Integer, Integer> tagToValue = new HashMap<>();
 			List<Integer> changedConsts = new ArrayList<>();
-
+			
 			if (line == null) {
 
 			} else {
@@ -78,6 +86,10 @@ public class CallSketch {
 							constValidList.add(constIndex);
 							constWaiting = true;
 							constFound = true;
+						}
+						else if (line.substring(0, 9).equals("void Line")) {
+							exprIndex = extractInt(line).get(0);
+							
 						}
 					}
 					if (line.length() >= 10) {
@@ -125,6 +137,11 @@ public class CallSketch {
 							constChecking = true;
 							continue;
 						}
+						else if (line.substring(5, 18).equals("glbInit_line")) {
+							exprCheck = extractInt(line).get(0);
+							exprChecking = true;
+							continue;
+						}
 					}
 					if (checking) {
 						if (extractInt(line).size() > 0)
@@ -142,6 +159,14 @@ public class CallSketch {
 							if (extractInt(line).get(extractInt(line).size() - 1) == 0 && line.substring(2,7).equals("const")) {
 								unchangedConstIndex.add(constcheck);
 								constChecking = false;
+								continue;
+							}
+					}
+					if (exprChecking) {
+						if (extractInt(line).size() > 0)
+							if (extractInt(line).get(extractInt(line).size() - 1) == 1 && line.substring(2,6).equals("line")) {
+								validExprList.add(exprCheck);
+								exprChecking = false;
 								continue;
 							}
 					}

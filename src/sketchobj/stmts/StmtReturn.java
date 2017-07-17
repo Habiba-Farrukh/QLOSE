@@ -122,7 +122,7 @@ public class StmtReturn extends Statement
 
 
 	@Override
-	public ConstData replaceLinearCombination(int index){
+	public ConstData replaceLinearCombination(int index, int line){
 		return new ConstData(null, new ArrayList<SketchObject>(), index, 0, null,this.getLineNumber());
 	}
 

@@ -68,7 +68,7 @@ public class StmtExpr extends Statement {
 		parent.stmts.set(index, new StmtBlock(ConstraintFactory.recordStateOriginal(this.getPrectx().getLinenumber(), this.getPrectx().getAllVars()), this));
 	}
 	@Override
-	public  ConstData replaceLinearCombination(int index){
+	public  ConstData replaceLinearCombination(int index, int line){
 		return new ConstData(null, new ArrayList<SketchObject>(), index, 0, null,this.getLineNumber());
 	}
 

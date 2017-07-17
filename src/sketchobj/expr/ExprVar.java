@@ -94,7 +94,7 @@ public class ExprVar extends Expression
 		this.setAtom(true);
 	}
 	@Override
-	public ConstData replaceLinearCombination(int index) {
+	public ConstData replaceLinearCombination(int index, int line) {
 		return new ConstData(null, new ArrayList<>(), index, 0, null,0);
 	}
 }

@@ -7,7 +7,10 @@ import java.util.Map;
 import constraintfactory.ConstData;
 import constraintfactory.ConstraintFactory;
 import constraintfactory.ExternalFunction;
+import sketch.compiler.ast.core.Function.FcnType;
 import sketchobj.core.Context;
+import sketchobj.core.Function;
+import sketchobj.core.Parameter;
 import sketchobj.core.SketchObject;
 import sketchobj.core.Type;
 import sketchobj.core.TypeArray;
@@ -16,6 +19,7 @@ import sketchobj.expr.ExprBinary;
 import sketchobj.expr.ExprConstInt;
 import sketchobj.expr.ExprConstant;
 import sketchobj.expr.ExprFunCall;
+import sketchobj.expr.ExprStar;
 import sketchobj.expr.ExprVar;
 import sketchobj.expr.Expression;
 
@@ -156,18 +160,22 @@ public class StmtAssign extends Statement {
 		return rhs.extractExternalFuncs(externalFuncNames);
 	}
 
-	@Override
-	public ConstData replaceLinearCombination(int index) {
+	public ConstData addLineChangeFunction(int index, int line) { 
+		System.out.println("Expr Num is : " + line);
+		Expression consReturn = null;
+		Expression altReturn = this.rhs;
 		Integer primaryIndex = -1;
 		List<SketchObject> toAdd = new ArrayList<SketchObject>();
 		rhs.checkAtom();
 		rhs.setLCadded(true);
 		Type t = this.getPrectx().getAllVars().get(lhs.toString());
 		if (rhs.isAtom()) {
-			this.rhs = new ExprBinary(new ExprFunCall("Coeff" + index, new ArrayList<Expression>()), "*", this.rhs,
-					this.getLineNumber());
+			//consReturn = new ExprBinary(new ExprFunCall("Coeff" + index, new ArrayList<Expression>()), "*", this.rhs,
+				//	this.getLineNumber());
+			//this.rhs = new ExprBinary(new ExprFunCall("Coeff" + index, new ArrayList<Expression>()), "*", this.rhs,
+			//    this.getLineNumber());
 			primaryIndex = index;
-			index++;
+			//index++;
 		} else {
 			rhs.setT(t);
 			rhs.setCtx(this.getPrectx());
@@ -184,6 +192,8 @@ public class StmtAssign extends Statement {
 			return new ConstData(null, new ArrayList<SketchObject>(), index, 0, null, this.getLineNumber());
 		}
 		List<String> vars = new ArrayList<String>(this.getPrectx().getAllVars().keySet());
+		List<Expression> varsExpression = new ArrayList<Expression>();
+		List<Parameter> parameters = new ArrayList<Parameter>();
 		for (String v : vars) {
 			// all 1 dimension array
 
@@ -210,19 +220,102 @@ public class StmtAssign extends Statement {
 				continue;
 			Expression newTerm = new ExprBinary(new ExprFunCall("Coeff" + index, new ArrayList<Expression>()), "*",
 					new ExprVar(v, t), this.getLineNumber());
-			this.rhs = new ExprBinary(rhs, "+", newTerm, this.getLineNumber());
+			if (consReturn != null)
+				consReturn = new ExprBinary(consReturn, "+", newTerm, this.getLineNumber());
+			else
+				consReturn = newTerm;
 			liveVarsIndexSet.add(index);
 			index++;
 			liveVarsNameSet.add(v);
+			varsExpression.add(new ExprVar(v));
+			parameters.add(new Parameter(((TypePrimitive) this.getPrectx().getAllVars().get(v)), v, 0, false));
 		}
-		this.rhs = new ExprBinary(this.rhs, "+",
+		consReturn = new ExprBinary(consReturn, "+",
 				new ExprBinary(new ExprFunCall("Coeff" + index), "*",
 						new ExprFunCall("Coeff" + (index + 1), new ArrayList<Expression>()), this.getLineNumber()),
 				this.getLineNumber());
 		index = index + 2;
+		Statement cons = new StmtReturn(consReturn);
+		Statement alt  = new StmtReturn(altReturn);
+		Statement funcStmt = new StmtIfThen(new ExprBinary(new ExprVar("line"+line+"change"), "==", new ExprConstInt(0), 0), alt, cons);
+		List<Statement> stmts = new ArrayList<Statement>();
+		//stmts.add(new StmtFunDecl(new Function("Line" + this.getLineNumber(), t, parameters, funcStmt)));
+		stmts.add(new StmtVarDecl(new TypePrimitive(1), "line" + line + "change", new ExprStar(), 0));
+		stmts.add(new StmtFunDecl(new Function("Line" + line, t, parameters, funcStmt)));
+		this.rhs = new ExprFunCall("Line" + line, varsExpression);
+		//System.out.println("Line change " + stmts);
 		return new ConstData(t, toAdd, index, 0, null, this.getLineNumber(), liveVarsIndexSet, liveVarsNameSet,
-				primaryIndex);
+				primaryIndex, stmts, altReturn, consReturn);    
 	}
+	@Override
+	public ConstData replaceLinearCombination(int index, int line) {
+		System.out.println("Line: " + this.rhs.getClass() + " and line number is: " + this.getLineNumber());
+		return addLineChangeFunction(index, line);
+		/*Integer primaryIndex = -1;
+    List<SketchObject> toAdd = new ArrayList<SketchObject>();
+    rhs.checkAtom();
+    rhs.setLCadded(true);
+    Type t = this.getPrectx().getAllVars().get(lhs.toString());
+    if (rhs.isAtom()) {
+      this.rhs = new ExprBinary(new ExprFunCall("Coeff" + index, new ArrayList<Expression>()), "*", this.rhs,
+          this.getLineNumber());
+      primaryIndex = index;
+      index++;
+    } else {
+      rhs.setT(t);
+      rhs.setCtx(this.getPrectx());
+      toAdd.add(rhs);
+    }
+    List<Integer> liveVarsIndexSet = new ArrayList<Integer>();
+    List<String> liveVarsNameSet = new ArrayList<String>();
+    if ((t instanceof TypePrimitive) && ((TypePrimitive) t).getType() == 1) {
+      rhs.setBoolean(true);
+      ;
+      return new ConstData(null, new ArrayList<SketchObject>(), index, 0, null, this.getLineNumber());
+    }
+    if (t instanceof TypeArray) {
+      return new ConstData(null, new ArrayList<SketchObject>(), index, 0, null, this.getLineNumber());
+    }
+    List<String> vars = new ArrayList<String>(this.getPrectx().getAllVars().keySet());
+    for (String v : vars) {
+      // all 1 dimension array
+
+      if (this.getPrectx().getAllVars().get(v) instanceof TypeArray) {
+        if (((TypePrimitive) ((TypeArray) this.getPostctx().getAllVars().get(v)).getBase())
+            .getType() != ((TypePrimitive) t).getType())
+          continue;
+
+
+		 * Expression newTerm = new ExprBinary( new ExprFunCall("Coeff"
+		 * + index, new ArrayList<Expression>()), "*", new
+		 * ExprArrayRange(v, new ExprStar(), this.getLineNumber()));
+		 * inits.set(i, new ExprBinary(inits.get(i), "+", newTerm));
+		 * liveVarsIndexSet.add(index); liveVarsNameSet.add(v); index++;
+
+        continue;
+      } else if (((TypePrimitive) this.getPrectx().getAllVars().get(v)).getType() != ((TypePrimitive) t)
+          .getType())
+        continue;
+
+		 * if(v.equals(lhs.toString())) continue;
+
+      if (this.getPostctx().getVarsInScope().contains(v))
+        continue;
+      Expression newTerm = new ExprBinary(new ExprFunCall("Coeff" + index, new ArrayList<Expression>()), "*",
+          new ExprVar(v, t), this.getLineNumber());
+      this.rhs = new ExprBinary(rhs, "+", newTerm, this.getLineNumber());
+      liveVarsIndexSet.add(index);
+      index++;
+      liveVarsNameSet.add(v);
+    }
+    this.rhs = new ExprBinary(this.rhs, "+",
+        new ExprBinary(new ExprFunCall("Coeff" + index), "*",
+            new ExprFunCall("Coeff" + (index + 1), new ArrayList<Expression>()), this.getLineNumber()),
+        this.getLineNumber());
+    index = index + 2;
+    return new ConstData(t, toAdd, index, 0, null, this.getLineNumber(), liveVarsIndexSet, liveVarsNameSet,
+        primaryIndex);
+		 */  }
 
 	@Override
 	public Map<Integer, String> ConstructLineToString(Map<Integer, String> line_to_string) {

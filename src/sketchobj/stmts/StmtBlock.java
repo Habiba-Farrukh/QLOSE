@@ -124,7 +124,7 @@ public class StmtBlock extends Statement {
 	}
 
 	@Override
-	public ConstData replaceLinearCombination(int index){
+	public ConstData replaceLinearCombination(int index, int line){
 		return new ConstData(null,stmts,index,0,null,this.getLineNumber());
 	}
 

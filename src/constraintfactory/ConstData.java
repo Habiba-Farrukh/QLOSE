@@ -5,6 +5,7 @@ import java.util.List;
 
 import sketchobj.core.SketchObject;
 import sketchobj.core.Type;
+import sketchobj.stmts.Statement;
 
 public class ConstData {
 	private Type type;
@@ -18,6 +19,9 @@ public class ConstData {
 	private List<String> liveVarsNameSet;
 	private Integer primaryCoeffIndex;
 	private boolean isLC;
+	private List<Statement> lineFunDecl;
+	private SketchObject original;
+	private SketchObject replaced;
 	
 	@SuppressWarnings("unchecked")
 	public ConstData(Type type, @SuppressWarnings("rawtypes") List children, int index, int value, String name, int line, boolean isc){
@@ -53,10 +57,40 @@ public class ConstData {
 		this.primaryCoeffIndex = primaryCoeffIndex;
 		this.isLC = isLC;
 	}
+	
+	public ConstData(Type t, List<SketchObject> toAdd, int index2, int i, String name, int lineNumber,
+			List<Integer> liveVarsIndexSet2, List<String> liveVarsNameSet2, Integer primaryCoeffIndex, 
+			List<Statement> lineFunDecl, SketchObject original, SketchObject replaced, boolean isLC) {
+		this.setType(t);
+		this.setChildren(toAdd);
+		this.setIndex(index2);
+		this.setValue(i);
+		this.setName(name);
+		this.oriline=lineNumber;
+		this.isCoeff = true;
+		this.liveVarsIndexSet = liveVarsIndexSet2;
+		this.liveVarsNameSet = liveVarsNameSet2;
+		this.primaryCoeffIndex = primaryCoeffIndex;
+		this.isLC = isLC;
+		this.lineFunDecl = lineFunDecl;
+		this.setOriginal(original);
+		this.setReplaced(replaced);
+	}
+	
 	public ConstData(Type t, List<SketchObject> toAdd, int i, int j, String name, int k,
 			List<Integer> liveVarsIndexSet2, List<String> liveVarsNameSet2, Integer primaryIndex) {
 		this(t, toAdd, i, j, name, k, liveVarsIndexSet2, liveVarsNameSet2, primaryIndex, false);
 		
+	}
+	public ConstData(Type t, List<SketchObject> toAdd, int i, int j, String name, int k,
+			List<Integer> liveVarsIndexSet2, List<String> liveVarsNameSet2, Integer primaryIndex,
+			List<Statement> lineFunDecl, SketchObject original, SketchObject replaced) {
+		this(t, toAdd, i, j, name, k, liveVarsIndexSet2, liveVarsNameSet2, primaryIndex, lineFunDecl, original, replaced, false);
+		
+	}
+	
+	public List<Statement> getLineFunDecl() {
+		return lineFunDecl;
 	}
 	public List<SketchObject> getChildren() {
 		return children;
@@ -126,5 +160,17 @@ public class ConstData {
 	}
 	public void setIsLC(boolean isLC) {
 		this.isLC = isLC;
+	}
+	public SketchObject getOriginal() {
+		return original;
+	}
+	public void setOriginal(SketchObject original) {
+		this.original = original;
+	}
+	public SketchObject getReplaced() {
+		return replaced;
+	}
+	public void setReplaced(SketchObject replaced) {
+		this.replaced = replaced;
 	}
 }

@@ -44,7 +44,7 @@ public class FcnHeader extends SketchObject {
     	return result;
     }
 	@Override
-	public ConstData replaceLinearCombination(int index) {
+	public ConstData replaceLinearCombination(int index, int line) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -77,7 +77,7 @@ public class Main {
 		List<ExternalFunction> externalFuncs = cf.externalFuncs;
 
 		System.out.println(script);
-		System.out.println("...................."+cf.coeffIndexToLine+"-----------------------------------");
+		System.out.println("...................."+cf.exprToOriginal+"-----------------------------------");
 
 		// no external Functions
 		if (externalFuncs.size() == 0) {
@@ -98,13 +98,13 @@ public class Main {
 			Map<Integer, List<Integer>> lineToCoeff = new HashMap<Integer, List<Integer>>();
 			Map<Integer, List<Integer>> lineToConst = new HashMap<Integer, List<Integer>>();
 
-			for (int coeff : cf.coeffIndexToLine.keySet()) {
-				int line = cf.coeffIndexToLine.get(coeff);
+			for (int coeff : cf.coeffIndexToExpr.keySet()) {
+				int expr = cf.coeffIndexToExpr.get(coeff);
 				if (validIndexSet.contains(coeff)) {
-					if (lineToCoeff.containsKey(line))
-						lineToCoeff.get(line).add(coeff);
+					if (lineToCoeff.containsKey(expr))
+						lineToCoeff.get(expr).add(coeff);
 					else {
-						lineToCoeff.put(line, new ArrayList<Integer>(coeff));
+						lineToCoeff.put(expr, new ArrayList<Integer>(coeff));
 					}
 				}
 			}
@@ -135,11 +135,11 @@ public class Main {
 				String stmtString = ConstraintFactory.lineToString.get(tmpLine);
 				repair.put(tmpLine, replaceCoeff(stmtString, result, ConstraintFactory.coeffIndexToLine, tmpLine));
 			}*/
-			for (int line : cf.lineToString.keySet()) {
+			for (int line : cf.exprToReplaced.keySet()) {
 				if (lineToCoeff.containsKey(line) || lineToConst.containsKey(line)){
-					String stmtString = cf.lineToString.get(line);
-					System.out.println("Line "+ line +"is : " + stmtString);
-					repair.put(line, replaceCoeff(stmtString, result, constResult, cf.coeffIndexToLine,
+					String stmtString = cf.lineToString.get(cf.exprToLine.get(line)).replaceAll("Line.*", cf.exprToReplaced.get(line));
+					System.out.println("Expr "+ line +" is : " + stmtString);
+					repair.put(line, replaceCoeff(stmtString, result, constResult, cf.coeffIndexToExpr,
 							cf.constMapLine, line));
 				}
 			}
@@ -166,13 +166,13 @@ public class Main {
 	}
 	
 	private String replaceCoeff(String stmtString, Map<Integer, Integer> result,
-			Map<Integer, Integer> constResult, Map<Integer, Integer> coeffIndexToLine,
+			Map<Integer, Integer> constResult, Map<Integer, Integer> coeffIndexToExpr,
 			Map<Integer, Integer> constMapLine, int tmpLine) {
 		List<Integer> rangedCoeff = new ArrayList<Integer>();
 		List<Integer> rangedConst = new ArrayList<Integer>();
 		// System.out.println(result);
-		for (int k : coeffIndexToLine.keySet()) {
-			if (coeffIndexToLine.get(k) == tmpLine)
+		for (int k : coeffIndexToExpr.keySet()) {
+			if (coeffIndexToExpr.get(k) == tmpLine)
 				rangedCoeff.add(k);
 		}
 		for (int k : constMapLine.keySet()) {
@@ -182,10 +182,11 @@ public class Main {
 			}
 		}
 		for (int c : rangedCoeff) {
-			if (result.containsKey(c))
-				stmtString = stmtString.replace("(Coeff" + c + "())", result.get(c).toString());
+			if (result.containsKey(c)) {
+				stmtString = stmtString.replace("Coeff" + c + "()", result.get(c).toString());
+			}
 			else
-				stmtString = stmtString.replace("(Coeff" + c + "())", "0");
+				stmtString = stmtString.replace("Coeff" + c + "()", "0");
 
 		}
 		for (int c : rangedConst) {
@@ -222,7 +223,7 @@ public class Main {
 			return s[0]+";"+s[1]+";"+s[2]+"){";
 		}
 		s = stmtString.split("=", 2);
-		return s[0] + "= " + eval(s[1].substring(0, s[1].length() - 1)) + ";";
+		return s[0] + "= " + eval(s[1].substring(0, s[1].length())) + ";";
 
 	}
 

@@ -36,7 +36,7 @@ public abstract class Expression extends SketchNode{
 			return new ConstData(null, toAdd, index, 0, null,this.lineNumber);
 	}
 	@Override
-	public abstract ConstData  replaceLinearCombination(int index);
+	public abstract ConstData  replaceLinearCombination(int index, int line);
 	
 	@Override
 	public ConstData replaceLinearCombination(int index, List<Integer> allowRange){

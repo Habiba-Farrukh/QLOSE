@@ -19,7 +19,7 @@ public class SketchNode extends SketchObject{
 	}
 
 	@Override
-	public ConstData replaceLinearCombination(int index) {
+	public ConstData replaceLinearCombination(int index, int line) {
 		// TODO Auto-generated method stub
 		return null;
 	}

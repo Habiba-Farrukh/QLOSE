@@ -28,6 +28,6 @@ public abstract class SketchObject {
 	public ConstData replaceLinearCombination(int index, List<Integer> allowRange) {
 		return null;
 	}
-	public abstract ConstData replaceLinearCombination(int index);
+	public abstract ConstData replaceLinearCombination(int index, int line);
 	
 }

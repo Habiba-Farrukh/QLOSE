@@ -141,7 +141,7 @@ public class StmtFor extends Statement {
 	}
 
 	@Override
-	public ConstData replaceLinearCombination(int index) {
+	public ConstData replaceLinearCombination(int index, int line) {
 		this.cond.setBoolean(true);
 		List<SketchObject> toAdd = new ArrayList<SketchObject>();
 		toAdd.add(init);

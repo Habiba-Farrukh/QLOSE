@@ -33,10 +33,22 @@ public class ConstraintFactory {
 
 	// map from coefficient index to line number in the code
 	public Map<Integer, Integer> coeffIndexToLine = new HashMap<Integer, Integer>();
+	
+	// map from coefficient index to expression in the code
+	public Map<Integer, Integer> coeffIndexToExpr = new HashMap<Integer, Integer>();
 
+	// map from expr index to the original Statement in the code
+	public Map<Integer, String> exprToOriginal = new HashMap<Integer, String>();
+
+	// map from expr index to the replaced LC Statement in the code
+	public Map<Integer, String> exprToReplaced = new HashMap<Integer, String>();
+	
 	// map from line number to code string
 	public Map<Integer, String> lineToString = new HashMap<Integer, String>();
 
+	// map from expr number to line number
+	public Map<Integer, Integer> exprToLine = new HashMap<Integer, Integer>();
+	
 	// map for external function
 	public List<ExternalFunction> externalFuncs = new ArrayList<ExternalFunction>();
 
@@ -45,6 +57,7 @@ public class ConstraintFactory {
 
 
 	int numberOfConstants = 0;  // number of constants in code
+	int numberOfExpressions = 0;
 	Integer numLines      = -1; // number of lines in code
 	Integer coeffIndex    = 0;  // number  of coefficients
 	List<Integer> noWeightCoeff   = new ArrayList<Integer>();
@@ -164,7 +177,7 @@ public class ConstraintFactory {
     System.out.println("*************************ORIGINAL SOURCE**********************************");
     System.out.println(originalSource);*/
 
-		Statement globalVarDecls = getGlobalDecls();
+		//Statement globalVarDecls = getGlobalDecls();
 		/*System.out.println("*************************GLOBAL VARIABLE DECLARATIONS**********************************");
     System.out.println(globalVarDecls);*/
 
@@ -190,7 +203,7 @@ public class ConstraintFactory {
       System.out.println("The line number is: " + i + " and the value is: " + constMapLine.get(i));
     }*/
 		List<Statement> stmts = new ArrayList<>();
-		stmts.add(globalVarDecls);
+		//stmts.add(globalVarDecls);
 		// add declare of constant functions
 		stmts.add(coeffFunDecls);
 		stmts.add(constFunDecls);
@@ -264,6 +277,7 @@ public class ConstraintFactory {
 		List<Statement> stmts = new ArrayList<Statement>();
 		stmts.add(new StmtVarDecl(new TypePrimitive(4), "SyntacticDistance", new ExprConstInt(0), 0));
 		stmts.add(new StmtVarDecl(new TypePrimitive(4), "SemanticDistance", new ExprConstInt(0), 0));
+		stmts.add(new StmtVarDecl(new TypePrimitive(4), "ExprChange", new ExprConstInt(0), 0));
 
 		// semantic distance
 		if (distanceMode == 0)
@@ -277,7 +291,15 @@ public class ConstraintFactory {
 		}
 		stmts.add(syntacticDistance);
 
+		StmtBlock exprChange = new StmtBlock();
+		for (int i = 0; i < numberOfExpressions; i++) {
+			// if (!ConstraintFactory.noWeightCoeff.contains(i))
+			exprChange.addStmt(new StmtAssign(new ExprVar("ExprChange"), new ExprVar("line" + i + "change"), 1, 1));
+		}
+		stmts.add(exprChange);
+		
 		Expression sumOfConstChange = new ExprVar("const" + 0 + "change");
+		stmts.add(new StmtAssert(new ExprBinary(new ExprVar("ExprChange"), "<", new ExprConstInt(2), 0), 0));
 		stmts.add(new StmtAssert(new ExprBinary(new ExprVar("SemanticDistance"), distanceOperator, new ExprConstInt(semanticDistanceBound), 0), 0));
 
 		stmts.add(new StmtMinimize(new ExprVar("SyntacticDistance+SemanticDistance"), true));
@@ -518,17 +540,20 @@ public class ConstraintFactory {
 		Stack<SketchObject> stmtStack = new Stack<SketchObject>();
 		List<Integer> coeffIndices    = new ArrayList<Integer>();
 		int index = 0;
+		int exprNum = 0;
+		System.out.println("Exprnum: " + exprNum);
 		stmtStack.push(source);
 		while (!stmtStack.empty()) {
 			SketchObject target = stmtStack.pop();
 			ConstData data    	= null;
-			data        		= target.replaceLinearCombination(index);
+			data        		= target.replaceLinearCombination(index, exprNum);
 			if (data.getType() != null) {
 				while (index <= data.getPrimaryCoeffIndex()) {
 					if (!coeffIndices.contains(index)) {
 						list.add(coeffChangeDecl(index, new TypePrimitive(1)));
 						list.add(new StmtFunDecl(addCoeffFun(index, 1, data.getType())));
 						coeffIndexToLine.put(index, data.getOriline());
+						coeffIndexToExpr.put(index, exprNum);
 						coeffIndices.add(index);
 					}
 					index++;
@@ -539,6 +564,7 @@ public class ConstraintFactory {
 							list.add(coeffChangeDecl(ii, new TypePrimitive(1)));
 							list.add(new StmtFunDecl(addCoeffFun(ii, 0, data.getType())));
 							coeffIndexToLine.put(ii, data.getOriline());
+							coeffIndexToExpr.put(ii, exprNum);
 							coeffIndices.add(ii);
 						}
 					}
@@ -551,21 +577,31 @@ public class ConstraintFactory {
 						list.add(coeffChangeDecl(index - 2, new TypePrimitive(1)));
 						list.add(new StmtFunDecl(addCoeffFun(index - 2, 0, data.getType())));
 						coeffIndexToLine.put(index - 2, data.getOriline());
+						coeffIndexToExpr.put(index - 2, exprNum);
 						coeffIndices.add(index - 2);
 					}
 					if (!coeffIndices.contains(index - 1)) {
 						list.add(coeffChangeDecl(index - 1, new TypePrimitive(4)));
 						list.add(new StmtFunDecl(addLCConstFun(index - 1, data.getType())));
 						coeffIndexToLine.put(index - 1, data.getOriline());
+						coeffIndexToExpr.put(index - 1, exprNum);
 						coeffIndices.add(index - 1);
 					}
 
+				}
+				if (data.getLineFunDecl() != null) {
+					list.addAll(data.getLineFunDecl());
+					exprToOriginal.put(exprNum, data.getOriginal().toString());
+					exprToReplaced.put(exprNum, data.getReplaced().toString());
+					exprToLine.put(exprNum, data.getOriline());
+					exprNum++;
 				}
 			}
 			index = data.getIndex();
 			pushAll(stmtStack, data.getChildren());
 		}
 		numberOfConstants = index;
+		numberOfExpressions = exprNum;
 		return new StmtBlock(list);
 	}
 
@@ -683,7 +719,7 @@ public class ConstraintFactory {
 		for (int line : coeffIndexToLine.values()) {
 			if (appeared.contains(line))
 				continue;
-			result.addStmt(new StmtVarDecl(new TypePrimitive(1), "line" + line + "change", new ExprConstInt(0), 0));
+			result.addStmt(new StmtVarDecl(new TypePrimitive(1), "line" + line + "change", new ExprStar(), 0));
 			appeared.add(line);
 		}
 		numLines = appeared.size();

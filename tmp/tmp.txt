@@ -1,38 +1,37 @@
-bit line5change = 0;
-bit line6change = 0;
-bit line8change = 0;
-bit line9change = 0;
-
 bit coeff0change = ??;
  int Coeff0(){
 if(coeff0change == 0){
-return 1;
+return 0;
 }
 
 if(??){
-return 0;
+return 1;
 }
 
 return -1;
 }
 
-int coeff1change = ??;
+bit coeff1change = ??;
  int Coeff1(){
-if(??){
+if(coeff1change == 0){
 return 0;
 }
 
-return coeff1change;
+if(??){
+return 1;
+}
+
+return -1;
 }
 
 bit coeff2change = ??;
  int Coeff2(){
 if(coeff2change == 0){
-return 1;
+return 0;
 }
 
 if(??){
-return 0;
+return 1;
 }
 
 return -1;
@@ -51,18 +50,22 @@ return 1;
 return -1;
 }
 
-bit coeff4change = ??;
+int coeff4change = ??;
  int Coeff4(){
-if(coeff4change == 0){
+if(??){
 return 0;
 }
 
-if(??){
-return 1;
+return coeff4change;
 }
 
-return -1;
-}
+bit line0change = ??;
+ int Line0(int x, int y, int z){
+if(line0change == 0){
+return z + y;
+}else{
+return Coeff0() * x + Coeff1() * y + Coeff2() * z + Coeff3() * Coeff4();
+}}
 
 bit coeff5change = ??;
  int Coeff5(){
@@ -90,13 +93,17 @@ return 1;
 return -1;
 }
 
-int coeff7change = ??;
+bit coeff7change = ??;
  int Coeff7(){
-if(??){
+if(coeff7change == 0){
 return 0;
 }
 
-return coeff7change;
+if(??){
+return 1;
+}
+
+return -1;
 }
 
 bit coeff8change = ??;
@@ -112,36 +119,44 @@ return 1;
 return -1;
 }
 
-int coeff9change = ??;
+bit coeff9change = ??;
  int Coeff9(){
-if(??){
+if(coeff9change == 0){
 return 0;
 }
 
-return coeff9change;
-}
-
-bit coeff10change = ??;
- int Coeff10(){
-if(coeff10change == 0){
+if(??){
 return 1;
-}
-
-if(??){
-return 0;
 }
 
 return -1;
 }
 
-bit coeff11change = ??;
- int Coeff11(){
-if(coeff11change == 0){
+int coeff10change = ??;
+ int Coeff10(){
+if(??){
 return 0;
 }
 
-if(??){
+return coeff10change;
+}
+
+bit line1change = ??;
+ bit Line1(int x, int result, int y, int z){
+if(line1change == 0){
+return x > y;
+}else{
+return Coeff5() * x + Coeff6() * result + Coeff7() * y + Coeff8() * z + Coeff9() * Coeff10() > 0;
+}}
+
+bit coeff11change = ??;
+ int Coeff11(){
+if(coeff11change == 0){
 return 1;
+}
+
+if(??){
+return 0;
 }
 
 return -1;
@@ -186,25 +201,212 @@ return 1;
 return -1;
 }
 
-int coeff15change = ??;
+bit coeff15change = ??;
  int Coeff15(){
+if(coeff15change == 0){
+return 0;
+}
+
+if(??){
+return 1;
+}
+
+return -1;
+}
+
+int coeff16change = ??;
+ int Coeff16(){
 if(??){
 return 0;
 }
 
-return coeff15change;
+return coeff16change;
 }
+
+bit line2change = ??;
+ int Line2(int x, int result, int y, int z){
+if(line2change == 0){
+return x;
+}else{
+return Coeff11() * x + Coeff12() * result + Coeff13() * y + Coeff14() * z + Coeff15() * Coeff16();
+}}
+
+bit coeff17change = ??;
+ int Coeff17(){
+if(coeff17change == 0){
+return 0;
+}
+
+if(??){
+return 1;
+}
+
+return -1;
+}
+
+bit coeff18change = ??;
+ int Coeff18(){
+if(coeff18change == 0){
+return 0;
+}
+
+if(??){
+return 1;
+}
+
+return -1;
+}
+
+bit coeff19change = ??;
+ int Coeff19(){
+if(coeff19change == 0){
+return 0;
+}
+
+if(??){
+return 1;
+}
+
+return -1;
+}
+
+bit coeff20change = ??;
+ int Coeff20(){
+if(coeff20change == 0){
+return 0;
+}
+
+if(??){
+return 1;
+}
+
+return -1;
+}
+
+bit coeff21change = ??;
+ int Coeff21(){
+if(coeff21change == 0){
+return 0;
+}
+
+if(??){
+return 1;
+}
+
+return -1;
+}
+
+int coeff22change = ??;
+ int Coeff22(){
+if(??){
+return 0;
+}
+
+return coeff22change;
+}
+
+bit line3change = ??;
+ bit Line3(int x, int result, int y, int z){
+if(line3change == 0){
+return y > z;
+}else{
+return Coeff17() * x + Coeff18() * result + Coeff19() * y + Coeff20() * z + Coeff21() * Coeff22() > 0;
+}}
+
+bit coeff23change = ??;
+ int Coeff23(){
+if(coeff23change == 0){
+return 1;
+}
+
+if(??){
+return 0;
+}
+
+return -1;
+}
+
+bit coeff24change = ??;
+ int Coeff24(){
+if(coeff24change == 0){
+return 0;
+}
+
+if(??){
+return 1;
+}
+
+return -1;
+}
+
+bit coeff25change = ??;
+ int Coeff25(){
+if(coeff25change == 0){
+return 0;
+}
+
+if(??){
+return 1;
+}
+
+return -1;
+}
+
+bit coeff26change = ??;
+ int Coeff26(){
+if(coeff26change == 0){
+return 0;
+}
+
+if(??){
+return 1;
+}
+
+return -1;
+}
+
+bit coeff27change = ??;
+ int Coeff27(){
+if(coeff27change == 0){
+return 0;
+}
+
+if(??){
+return 1;
+}
+
+return -1;
+}
+
+int coeff28change = ??;
+ int Coeff28(){
+if(??){
+return 0;
+}
+
+return coeff28change;
+}
+
+bit line4change = ??;
+ int Line4(int x, int result, int y, int z){
+if(line4change == 0){
+return x;
+}else{
+return Coeff23() * x + Coeff24() * result + Coeff25() * y + Coeff26() * z + Coeff27() * Coeff28();
+}}
 
 
 
 int[100] lineArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 int[100] xArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int[100] resultArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 int[100] yArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 int[100] zArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 
 int[100] lineOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 int[100] xOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int[100] resultOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 int[100] yOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 int[100] zOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
@@ -219,10 +421,20 @@ xOriginalArray[originalCount] = x;
 yOriginalArray[originalCount] = y;
 zOriginalArray[originalCount] = z;
 
-if(x > y){
+int result = z + y;
+
 (originalCount)++;
 lineOriginalArray[originalCount] = 6;
 xOriginalArray[originalCount] = x;
+resultOriginalArray[originalCount] = result;
+yOriginalArray[originalCount] = y;
+zOriginalArray[originalCount] = z;
+
+if(x > y){
+(originalCount)++;
+lineOriginalArray[originalCount] = 7;
+xOriginalArray[originalCount] = x;
+resultOriginalArray[originalCount] = result;
 yOriginalArray[originalCount] = y;
 zOriginalArray[originalCount] = z;
 
@@ -230,8 +442,9 @@ y = x;
 
 
 (originalCount)++;
-lineOriginalArray[originalCount] = 6;
+lineOriginalArray[originalCount] = 7;
 xOriginalArray[originalCount] = x;
+resultOriginalArray[originalCount] = result;
 yOriginalArray[originalCount] = y;
 zOriginalArray[originalCount] = z;
 
@@ -240,15 +453,17 @@ zOriginalArray[originalCount] = z;
 
 
 (originalCount)++;
-lineOriginalArray[originalCount] = 8;
+lineOriginalArray[originalCount] = 9;
 xOriginalArray[originalCount] = x;
+resultOriginalArray[originalCount] = result;
 yOriginalArray[originalCount] = y;
 zOriginalArray[originalCount] = z;
 
 if(y > z){
 (originalCount)++;
-lineOriginalArray[originalCount] = 9;
+lineOriginalArray[originalCount] = 10;
 xOriginalArray[originalCount] = x;
+resultOriginalArray[originalCount] = result;
 yOriginalArray[originalCount] = y;
 zOriginalArray[originalCount] = z;
 
@@ -256,8 +471,9 @@ z = x;
 
 
 (originalCount)++;
-lineOriginalArray[originalCount] = 9;
+lineOriginalArray[originalCount] = 10;
 xOriginalArray[originalCount] = x;
+resultOriginalArray[originalCount] = result;
 yOriginalArray[originalCount] = y;
 zOriginalArray[originalCount] = z;
 
@@ -266,8 +482,9 @@ zOriginalArray[originalCount] = z;
 
 
 (originalCount)++;
-lineOriginalArray[originalCount] = 11;
+lineOriginalArray[originalCount] = 12;
 xOriginalArray[originalCount] = x;
+resultOriginalArray[originalCount] = result;
 yOriginalArray[originalCount] = y;
 zOriginalArray[originalCount] = z;
 
@@ -283,19 +500,30 @@ xArray[count] = x;
 yArray[count] = y;
 zArray[count] = z;
 
-if(((x - y) + ((Coeff0()) * (Coeff1()))) > 0){
+int result = Line0(x, y, z);
+
 (count)++;
 lineArray[count] = 6;
 xArray[count] = x;
+resultArray[count] = result;
 yArray[count] = y;
 zArray[count] = z;
 
-y = (((((Coeff2()) * x) + ((Coeff3()) * x)) + ((Coeff4()) * y)) + ((Coeff5()) * z)) + ((Coeff6()) * (Coeff7()));
+if(Line1(x, result, y, z) > 0){
+(count)++;
+lineArray[count] = 7;
+xArray[count] = x;
+resultArray[count] = result;
+yArray[count] = y;
+zArray[count] = z;
+
+y = Line2(x, result, y, z);
 
 
 (count)++;
-lineArray[count] = 6;
+lineArray[count] = 7;
 xArray[count] = x;
+resultArray[count] = result;
 yArray[count] = y;
 zArray[count] = z;
 
@@ -304,24 +532,27 @@ zArray[count] = z;
 
 
 (count)++;
-lineArray[count] = 8;
+lineArray[count] = 9;
 xArray[count] = x;
+resultArray[count] = result;
 yArray[count] = y;
 zArray[count] = z;
 
-if(((y - z) + ((Coeff8()) * (Coeff9()))) > 0){
+if(Line3(x, result, y, z) > 0){
 (count)++;
-lineArray[count] = 9;
+lineArray[count] = 10;
 xArray[count] = x;
+resultArray[count] = result;
 yArray[count] = y;
 zArray[count] = z;
 
-z = (((((Coeff10()) * x) + ((Coeff11()) * x)) + ((Coeff12()) * y)) + ((Coeff13()) * z)) + ((Coeff14()) * (Coeff15()));
+z = Line4(x, result, y, z);
 
 
 (count)++;
-lineArray[count] = 9;
+lineArray[count] = 10;
 xArray[count] = x;
+resultArray[count] = result;
 yArray[count] = y;
 zArray[count] = z;
 
@@ -330,8 +561,9 @@ zArray[count] = z;
 
 
 (count)++;
-lineArray[count] = 11;
+lineArray[count] = 12;
 xArray[count] = x;
+resultArray[count] = result;
 yArray[count] = y;
 zArray[count] = z;
 
@@ -340,25 +572,25 @@ return z;
 
 }
 
-bit const16change = ??;
- int Const16(){
-if(const16change == 1){
+bit const29change = ??;
+ int Const29(){
+if(const29change == 1){
 return ??;
 }else{
 return 1;
 }}
 
-bit const17change = ??;
- int Const17(){
-if(const17change == 1){
+bit const30change = ??;
+ int Const30(){
+if(const30change == 1){
 return ??;
 }else{
 return 1;
 }}
 
-bit const18change = ??;
- int Const18(){
-if(const18change == 1){
+bit const31change = ??;
+ int Const31(){
+if(const31change == 1){
 return ??;
 }else{
 return 1;
@@ -366,13 +598,13 @@ return 1;
 
 
 harness void Constraint(int input0, int input1, int input2){
-if((input0 >= input1) && (input0 >= input2)){
-assert ((max3(input0, input1, input2)) == input0);
+if(input0 >= input1 && input0 >= input2){
+assert (max3(input0, input1, input2) == input0);
 }else{
-if((input1 >= input0) && (input1 >= input2)){
-assert ((max3(input0, input1, input2)) == input1);
+if(input1 >= input0 && input1 >= input2){
+assert (max3(input0, input1, input2) == input1);
 }else{
-assert ((max3(input0, input1, input2)) == input2);
+assert (max3(input0, input1, input2) == input2);
 }
 }
 }
@@ -380,8 +612,11 @@ assert ((max3(input0, input1, input2)) == input2);
 harness void Distance(){
 int SyntacticDistance = 0;
 int SemanticDistance = 0;
+int ExprChange = 0;
 xArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 xOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+resultArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+resultOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 yArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 yOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 zArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
@@ -390,6 +625,8 @@ lineOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 lineArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 xArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 xOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+resultArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+resultOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 yArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 yOriginalArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 zArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
@@ -401,28 +638,29 @@ count = -1;
 originalCount = -1;
 int out = 0;
 int outOriginal = 0;
-if(((Const16()) >= (Const17())) && ((Const16()) >= (Const18()))){
-assert ((max3(Const16(), Const17(), Const18())) == (Const16()));
+if(Const29() >= Const30() && Const29() >= Const31()){
+assert (max3(Const29(), Const30(), Const31()) == Const29());
 }else{
-if(((Const17()) >= (Const16())) && ((Const17()) >= (Const18()))){
-assert ((max3(Const16(), Const17(), Const18())) == (Const17()));
+if(Const30() >= Const29() && Const30() >= Const31()){
+assert (max3(Const29(), Const30(), Const31()) == Const30());
 }else{
-assert ((max3(Const16(), Const17(), Const18())) == (Const18()));
+assert (max3(Const29(), Const30(), Const31()) == Const31());
 }
 }
-if(((Const16()) >= (Const17())) && ((Const16()) >= (Const18()))){
-assert ((max3Original(Const16(), Const17(), Const18())) == (Const16()));
+if(Const29() >= Const30() && Const29() >= Const31()){
+assert (max3Original(Const29(), Const30(), Const31()) == Const29());
 }else{
-if(((Const17()) >= (Const16())) && ((Const17()) >= (Const18()))){
-assert ((max3Original(Const16(), Const17(), Const18())) == (Const17()));
+if(Const30() >= Const29() && Const30() >= Const31()){
+assert (max3Original(Const29(), Const30(), Const31()) == Const30());
 }else{
-assert ((max3Original(Const16(), Const17(), Const18())) == (Const18()));
+assert (max3Original(Const29(), Const30(), Const31()) == Const31());
 }
 }
 for(int i = 0; i < 100; (i)++){
-SemanticDistance += (xArray[i]) != (xOriginalArray[i]);
-SemanticDistance += (yArray[i]) != (yOriginalArray[i]);
-SemanticDistance += (zArray[i]) != (zOriginalArray[i]);
+SemanticDistance += xArray[i] != xOriginalArray[i];
+SemanticDistance += resultArray[i] != resultOriginalArray[i];
+SemanticDistance += yArray[i] != yOriginalArray[i];
+SemanticDistance += zArray[i] != zOriginalArray[i];
 }
 
 
@@ -442,7 +680,27 @@ SyntacticDistance += coeff12change;
 SyntacticDistance += coeff13change;
 SyntacticDistance += coeff14change;
 SyntacticDistance += coeff15change;
+SyntacticDistance += coeff16change;
+SyntacticDistance += coeff17change;
+SyntacticDistance += coeff18change;
+SyntacticDistance += coeff19change;
+SyntacticDistance += coeff20change;
+SyntacticDistance += coeff21change;
+SyntacticDistance += coeff22change;
+SyntacticDistance += coeff23change;
+SyntacticDistance += coeff24change;
+SyntacticDistance += coeff25change;
+SyntacticDistance += coeff26change;
+SyntacticDistance += coeff27change;
+SyntacticDistance += coeff28change;
 
+ExprChange += line0change;
+ExprChange += line1change;
+ExprChange += line2change;
+ExprChange += line3change;
+ExprChange += line4change;
+
+assert (ExprChange < 2);
 assert (SemanticDistance < 5);
 minimize(SyntacticDistance+SemanticDistance);
 }

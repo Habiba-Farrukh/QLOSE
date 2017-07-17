@@ -2,6 +2,7 @@ public class Main
 {
 	public static int max3(int x, int y, int z)
 	{
+		int result = z + y;
 	    if(x>y) { 
 	    	y = x;
 	    }

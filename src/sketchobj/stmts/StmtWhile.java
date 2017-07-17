@@ -120,7 +120,7 @@ public class StmtWhile extends Statement {
 	}
 
 	@Override
-	public ConstData replaceLinearCombination(int index) {
+	public ConstData replaceLinearCombination(int index, int line) {
 		List<SketchObject> toAdd = new ArrayList<SketchObject>();
 		toAdd.add(cond);
 		toAdd.add(body);
